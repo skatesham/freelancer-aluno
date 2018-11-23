@@ -1,0 +1,29 @@
+<ngb-accordion [closeOthers]="true" activeIds="static-1">
+  <ngb-panel id="static-1" title="Administrador">
+    <ng-template ngbPanelContent>
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Nick:</strong> {{ usuarios[0].nick }}</li>
+        <li class="list-group-item"><strong>Email:</strong> {{ usuarios[0].email }}</li>
+        <li class="list-group-item"><strong>Tel:</strong> {{ usuarios[0].tel }}</li>
+      </ul>
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel id="static-2" title="Sham">
+    <ng-template ngbPanelContent>
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Nick:</strong> {{ usuarios[1].nick }}</li>
+        <li class="list-group-item"><strong>Email:</strong> {{ usuarios[1].email }}</li>
+        <li class="list-group-item"><strong>Tel:</strong> {{ usuarios[1].tel }}</li>
+      </ul>
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel id="static-3" title="Franco">
+    <ng-template ngbPanelContent>
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Nick:</strong> {{ usuarios[2].nick }}</li>
+        <li class="list-group-item"><strong>Email:</strong> {{ usuarios[2].email }}</li>
+        <li class="list-group-item"><strong>Tel:</strong> {{ usuarios[2].tel }}</li>
+      </ul>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
