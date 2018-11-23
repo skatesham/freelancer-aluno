@@ -1,4 +1,5 @@
 import { Usuario } from "./usuario";
+import { Tag } from "./tag";
 
 export class Pedido {
     
@@ -9,15 +10,17 @@ export class Pedido {
     titulo: string;
     disciplina: string;
     descricao: string;
+    tags: Tag[];
     aberto: boolean;
 
-    constructor(usuario:Usuario, titulo:string, desciplina:string, descricao:string){
+    constructor(usuario:Usuario, titulo:string, disciplina:string, descricao:string, tags: Tag[]){
         
         this.id = Pedido.count;
         this.usuario = usuario;
         this.titulo = titulo;
-        this.disciplina = this.disciplina;
+        this.disciplina = disciplina;
         this.descricao = descricao;
+        this.tags = tags;
         this.aberto = true;
         
         Pedido.count++;

@@ -6,6 +6,10 @@ export class Tag {
     nome: string;
 
     constructor(nome: string){
+
+        nome = nome.trim();
+        nome = nome.toLowerCase();
+
         this.id = Tag.count;
         this.nome = nome;
 

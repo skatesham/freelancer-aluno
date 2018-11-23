@@ -8,11 +8,13 @@ export class Proposta {
     id:number;
     usuario: Usuario;
     descricao:string;
+    pedido: Pedido
     aberto: boolean;
 
     constructor(usuario: Usuario, pedido:Pedido, descricao:string, ){
         this.id = Proposta.count;
         this.usuario = usuario;
+        this.pedido = pedido;
         this.descricao = descricao;
         this.aberto = true;
 

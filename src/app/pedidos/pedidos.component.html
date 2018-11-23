@@ -1,0 +1,19 @@
+<h3>Todos Pedidos de Ajuda</h3>
+<app-navbar></app-navbar>
+<div class="container">
+  <ngb-accordion [closeOthers]="true" activeIds="static-1">
+    <ngb-panel *ngFor="let pedido of pedidos" title="{{pedido.titulo}}">
+      <ng-template ngbPanelContent>
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Disciplina:</strong> {{ pedido.disciplina }}</li>
+          <li class="list-group-item"><strong>Descrição:</strong> {{ pedido.descricao }}</li>
+          <li class="list-group-item">
+            <ul class="list-group">
+              <li *ngFor="let tag of pedido.tags"> {{ tag.nome }}</li>
+            </ul>
+          </li>
+        </ul>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+</div>

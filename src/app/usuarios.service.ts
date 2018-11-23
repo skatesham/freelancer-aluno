@@ -13,6 +13,16 @@ export class UsuariosService {
     return usuarios;
   };
 
+  getUsuarioByEmail(email:string): Usuario {
+    let usuario = null;
+    usuarios.forEach(u => {
+      if(u.email == email){
+        usuario = u;
+      }     
+    });
+    return usuario; 
+  }
+
   adicionar(u:Usuario){
     usuarios.push(u);
   }
