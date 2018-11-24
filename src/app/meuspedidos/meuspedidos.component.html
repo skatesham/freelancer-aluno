@@ -17,10 +17,10 @@
               <p class="alert alert-success" *ngIf="pedido.aberto">Pedido Aberto</p>
               <p class="alert alert-danger" *ngIf="!pedido.aberto">Pedido Fechado</p>
             </li>
-            <li class="list-group-item"><strong>Propostas: </strong> {{pedido.propostas.length}}</li>
+            <li class="list-group-item"><strong>Propostas: </strong> {{ getQuantidadeAberto(pedido) }}</li>
           </ul>
           <li class="list-group-item">
-            <button (click)="verPropostas()" class="btn btn-info mr-2"> Propostas</button>
+            <button *ngIf="getQuantidadeAberto(pedido) > 0" (click)="verPropostas(pedido)" class="btn btn-info mr-2"> Propostas</button>
             <button (click)="fecharPedido(pedido)" *ngIf="pedido.aberto" class="ml-2 btn btn-danger"> Fechar Pedido</button>
             <button (click)="abrirPedido(pedido)" *ngIf="!pedido.aberto" class="ml-2 btn btn-success"> Abrir Pedido</button>
           </li>

@@ -14,6 +14,7 @@ import { CriarpedidoComponent } from './criarpedido/criarpedido.component';
 import { MeuspedidosComponent } from './meuspedidos/meuspedidos.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { PropostasComponent } from './propostas/propostas.component';
+import { PropostapedidosComponent } from './propostapedidos/propostapedidos.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'criar-pedido', component: CriarpedidoComponent},
   {path: 'meus-pedidos', component: MeuspedidosComponent},
   {path: 'propostas', component: PropostasComponent},
+  {path: 'propostas-pedido', component: PropostapedidosComponent},
 ]
 
 @NgModule({
@@ -36,6 +38,7 @@ const routes: Routes = [
     MeuspedidosComponent,
     CadastroComponent,
     PropostasComponent,
+    PropostapedidosComponent,
   ],
   imports: [
     NgbModule,

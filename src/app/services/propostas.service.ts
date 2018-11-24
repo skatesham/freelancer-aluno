@@ -11,10 +11,20 @@ export class PropostasService {
 
   constructor() { }
 
-  getPropostasByPedido(p: Pedido): Proposta[] {
+  getPropostasByPedido(pedido: Pedido): Proposta[] {
     let propostasPedido: Proposta[] = new Array<Proposta>();
     propostas.forEach((p: Proposta) => {
-      if(p.pedido.id === p.id){
+      if(p.pedido.id === pedido.id && p.aberto){
+        propostasPedido.push(p);
+      }
+    });
+    return propostasPedido;
+  }
+
+  getPropostasByPedidoId(id: number): Proposta[] {
+    let propostasPedido: Proposta[] = new Array<Proposta>();
+    propostas.forEach((p: Proposta) => {
+      if(p.pedido.id === id && p.aberto){
         propostasPedido.push(p);
       }
     });
