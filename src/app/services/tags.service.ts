@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { tags } from './models/mock-tags';
-import { Tag } from './models/tag';
+import { tags } from '../models/mock-tags';
+import { Tag } from '../models/tag';
 
 @Injectable({
   providedIn: 'root'

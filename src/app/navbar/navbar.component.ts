@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   current: string;
+
+  isCollapsed = true;
   
   constructor(private router:Router) { 
     if(localStorage.getItem('usuario') == null){

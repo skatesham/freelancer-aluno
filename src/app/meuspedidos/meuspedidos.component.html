@@ -13,9 +13,17 @@
                 <li *ngFor="let tag of pedido.tags"> {{ tag.nome }}</li>
               </ul>
             </li>
+            <li class="list-group-item">
+              <p class="alert alert-success" *ngIf="pedido.aberto">Pedido Aberto</p>
+              <p class="alert alert-danger" *ngIf="!pedido.aberto">Pedido Fechado</p>
+            </li>
             <li class="list-group-item"><strong>Propostas: </strong> {{pedido.propostas.length}}</li>
           </ul>
-          <li class="list-group-item"><button class="btn btn-success mr-2"> Propostas</button><button class="ml-2 btn btn-danger"> Excluir Pedido</button></li>
+          <li class="list-group-item">
+            <button (click)="verPropostas()" class="btn btn-info mr-2"> Propostas</button>
+            <button (click)="fecharPedido(pedido)" *ngIf="pedido.aberto" class="ml-2 btn btn-danger"> Fechar Pedido</button>
+            <button (click)="abrirPedido(pedido)" *ngIf="!pedido.aberto" class="ml-2 btn btn-success"> Abrir Pedido</button>
+          </li>
         </ng-template>
       </ngb-panel>
     </ngb-accordion>

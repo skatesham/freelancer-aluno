@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<h3>Minhas Propostas</h3>
+<div class="container">
+    <ngb-accordion [closeOthers]="true" activeIds="static-1">
+        <ngb-panel *ngFor="let proposta of propostas" title="{{proposta.titulo}}">
+            <ng-template ngbPanelContent>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Descrição:</strong> {{ proposta.descricao }}</li>
+                    <li class="list-group-item"><strong>Usuario:</strong> {{ proposta.usuario.nick }}</li>
+                    <li class="list-group-item"><strong>Pedido: </strong> {{proposta.pedido.titulo}}</li>
+                    <li class="list-group-item">
+                        <p class="alert alert-success" *ngIf="proposta.aberto">Proposta Aberta</p>
+                        <p class="alert alert-danger" *ngIf="!proposta.aberto">Proposta Fechada</p>
+                    </li>
+                    <li class="list-group-item" *ngIf="!proposta.avaliado">
+                        <p class="alert alert-warning">Proposta não Avalida</p>
+                    </li>
+                    <li class="list-group-item" *ngIf="proposta.avaliado">
+                        <p class="alert alert-success" *ngIf="proposta.aceita">Proposta Aceita</p>
+                        <p class="alert alert-danger" *ngIf="!proposta.aceita">Proposta Recusada</p>
+                    </li>
+                </ul>
+                <li class="list-group-item">
+                    <button (click)="fecharProposta(proposta)" *ngIf="proposta.aberto" class="ml-2 btn btn-danger">
+                        Fechar
+                        Proposta</button>
+                    <button (click)="abrirProposta(proposta)" *ngIf="!proposta.aberto" class="ml-2 btn btn-success">
+                        Abrir
+                        Proposta</button>
+                </li>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+</div>

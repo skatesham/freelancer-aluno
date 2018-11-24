@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Pedido } from '../models/pedido';
-import { PedidosService } from '../pedidos.service';
+import { PedidosService } from '../services/pedidos.service';
 import { Usuario } from '../models/usuario';
+import { propostas } from '../models/mock-propostas';
 
 @Component({
   selector: 'app-pedidos',
@@ -17,6 +18,7 @@ export class PedidosComponent implements OnInit {
   constructor(private pedidosService:PedidosService) {
     let u = localStorage.getItem('usuario');
     this.usuario = JSON.parse(u);
+    propostas;
    }
 
   ngOnInit() {

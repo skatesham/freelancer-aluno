@@ -23,6 +23,8 @@
     "@fortawesome/angular-fontawesome": "^0.3.0",
     "@ng-bootstrap/ng-bootstrap": "^4.0.0",
     "core-js": "^2.5.4",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.5",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },

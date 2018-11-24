@@ -1,6 +1,7 @@
 import { Pedido } from "./pedido";
 import { usuarios } from "./mock-usuarios";
 import { tags } from "./mock-tags";
+import { propostas } from "./mock-propostas";
 
 export let pedidos: Pedido[] = new Array<Pedido>();
 

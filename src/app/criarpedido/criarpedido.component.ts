@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PedidosService } from '../pedidos.service';
+import { PedidosService } from '../services/pedidos.service';
 import { Pedido } from '../models/pedido';
 import { Usuario } from '../models/usuario';
 import { Tag } from '../models/tag';

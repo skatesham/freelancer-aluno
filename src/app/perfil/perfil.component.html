@@ -1,34 +1,36 @@
 <app-navbar></app-navbar>
-<img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-<ngb-accordion [closeOthers]="true" activeIds="static-1">
-  <ngb-panel id="static-1" title="Administrador">
-    <ng-template ngbPanelContent>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <!--left col-->
+
+
+      <div class="text-center">
+        <img [src]="url"
+          class="rounded-circle avatar img-thumbnail" alt="avatar">
+        <h6>Selecione imagem para seu perfil...</h6>
+        <input [(ngModel)]="file"  (change)="uploadFile($event)" type="file" class="text-center center-block file-upload">
+      </div>
+      <hr>
+      <br>
+    </div>
+    <div class="col-sm-9">
       <ul class="list-group">
-        <li class="list-group-item"><strong>Nick:</strong> {{ usuarios[0].nick }}</li>
-        <li class="list-group-item"><strong>Email:</strong> {{ usuarios[0].email }}</li>
-        <li class="list-group-item"><strong>Tel:</strong> {{ usuarios[0].tel }}</li>
+        <li class="list-group-item">
+          <strong><h3>Perfil</h3></strong></li>
+        <li class="list-group-item">
+          <strong>Nick:</strong> {{usuario.nick}}</li>
+        <li class="list-group-item">
+          <strong>Email:</strong> {{usuario.email}}</li>
+        <li class="list-group-item">
+          <strong>Telefone:</strong> {{usuario.tel}}</li>
       </ul>
-    </ng-template>
-  </ngb-panel>
-  <ngb-panel id="static-2" title="Sham">
-    <ng-template ngbPanelContent>
+      <hr>
       <ul class="list-group">
-        <li class="list-group-item"><strong>Nick:</strong> {{ usuarios[1].nick }}</li>
-        <li class="list-group-item"><strong>Email:</strong> {{ usuarios[1].email }}</li>
-        <li class="list-group-item"><strong>Tel:</strong> {{ usuarios[1].tel }}</li>
+          <li class="list-group-item">
+              <strong><h5>Todas Tags</h5></strong>(Area Teste Tags)</li>
+        <li class="list-group-item" *ngFor="let tag of tags"> {{ tag.nome }}</li>
       </ul>
-    </ng-template>
-  </ngb-panel>
-  <ngb-panel id="static-3" title="Franco">
-    <ng-template ngbPanelContent>
-      <ul class="list-group">
-        <li class="list-group-item"><strong>Nick:</strong> {{ usuarios[2].nick }}</li>
-        <li class="list-group-item"><strong>Email:</strong> {{ usuarios[2].email }}</li>
-        <li class="list-group-item"><strong>Tel:</strong> {{ usuarios[2].tel }}</li>
-      </ul>
-    </ng-template>
-  </ngb-panel>
-</ngb-accordion>
-<ul>
-  <li *ngFor="let tag of tags"> {{ tag.nome }}</li>
-</ul>
+    </div>
+  </div>
+</div>
