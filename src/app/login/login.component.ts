@@ -11,7 +11,7 @@ import { Usuario } from '../models/usuario';
 export class LoginComponent implements OnInit {
 
   email:string = 'sham.vinicius@gmail.com';
-  password:string = '';
+  password:string = '123';
 
   erro:boolean = false;
   erroDesc:string = '';

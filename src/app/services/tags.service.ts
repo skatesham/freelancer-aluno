@@ -13,16 +13,19 @@ export class TagsService {
     return tags;
   }
 
-  getOrCreateTag(tagName: string){
+  getOrCreateTag(tagName: string): Tag{
     tagName = tagName.trim();
     tagName = tagName.toLowerCase();
+    let novaTag;
     tags.forEach(t => {
       if(t.nome === tagName){
-        return t;
+        novaTag = t;
       }
     });
-    let novaTag = new Tag(tagName);
-    tags.push(novaTag);
+    if(novaTag == null){
+      novaTag = new Tag(tagName);
+      tags.push(novaTag);
+    }
     return novaTag;
   }
 }
