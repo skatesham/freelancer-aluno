@@ -14,9 +14,11 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CriarpedidoComponent } from './criarpedido/criarpedido.component';
 import { MeuspedidosComponent } from './meuspedidos/meuspedidos.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
+  {path: 'cadastro', component: CadastroComponent},
   {path: 'perfil', component: PerfilComponent},
   {path: 'pedidos', component: PedidosComponent},
   {path: 'criar-pedido', component: CriarpedidoComponent},
@@ -32,6 +34,7 @@ const routes: Routes = [
     NavbarComponent,
     CriarpedidoComponent,
     MeuspedidosComponent,
+    CadastroComponent,
   ],
   imports: [
     NgbModule,

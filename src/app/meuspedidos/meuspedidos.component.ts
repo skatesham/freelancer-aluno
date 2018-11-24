@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PedidosService } from '../pedidos.service';
+import { Pedido } from '../models/pedido';
+import { Usuario } from '../models/usuario';
 
 @Component({
   selector: 'app-meuspedidos',

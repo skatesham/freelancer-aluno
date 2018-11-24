@@ -24,4 +24,9 @@ export class PedidosService {
     return listaPedidos;
   }
 
+  criarPedido(pedido:Pedido){
+    pedidos.push(pedido);
+  }
+
+
 }

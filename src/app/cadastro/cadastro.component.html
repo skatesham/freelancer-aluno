@@ -1,0 +1,48 @@
+<h1>Freelancer Aluno</h1>
+<div class="my-login-page">
+    <section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-center h-100">
+				<div class="card-wrapper">
+					<div class="card fat">
+						<div class="card-body">
+							<h4 class="card-title">Criar Conta</h4>
+							<div>
+								<div class="form-group">
+									<label for="nick">Nick</label>
+									<input [(ngModel)]="nick" id="nick" type="text" class="form-control" name="nick" required autofocus>
+								</div>
+								<div class="form-group">
+									<label for="email">Email</label>
+									<input [(ngModel)]="email" id="email" type="email" class="form-control" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="tel">Celular (Whatsapp)</label>
+                    <input [(ngModel)]="tel" id="tel" type="tel" class="form-control" name="tel" required>
+                </div>							
+								<div class="form-group">
+									<label for="password">Senha</label>
+									<input [(ngModel)]="password" id="password" type="password" class="form-control" name="password" required data-eye>
+								</div>
+								<div class="form-group">
+									<label>
+										<input type="checkbox" name="aggree" value="1" required> Eu concordo com termos e condições
+									</label>
+								</div>
+
+								<div class="form-group no-margin">
+									<button (click)="cadastrar()" class="btn btn-primary btn-block">
+										Registrar
+									</button>
+								</div>
+								<div class="margin-top20 text-center">
+									Já possui uma conta? <a routerLink="/">Login</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

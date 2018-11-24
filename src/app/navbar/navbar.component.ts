@@ -11,8 +11,9 @@ export class NavbarComponent implements OnInit {
   current: string;
   
   constructor(private router:Router) { 
-    if(localStorage.getItem('usuario') === null){
-      this.router.navigate(['/']);
+    if(localStorage.getItem('usuario') == null){
+      alert("Usuario Não Autenticado")
+      this.logout();
     }
   }
 
@@ -22,7 +23,7 @@ export class NavbarComponent implements OnInit {
 
   logout(){
     localStorage.setItem('usuario', null);
-    this.router.navigate(['']);
+    this.router.navigateByUrl('/');
   }
 
 }
