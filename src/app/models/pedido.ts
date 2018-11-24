@@ -1,5 +1,6 @@
 import { Usuario } from "./usuario";
 import { Tag } from "./tag";
+import { Proposta } from "./proposta";
 
 export class Pedido {
     
@@ -10,6 +11,7 @@ export class Pedido {
     titulo: string;
     disciplina: string;
     descricao: string;
+    propostas: Proposta[];
     tags: Tag[];
     aberto: boolean;
 
@@ -21,6 +23,7 @@ export class Pedido {
         this.disciplina = disciplina;
         this.descricao = descricao;
         this.tags = tags;
+        this.propostas = [];
         this.aberto = true;
         
         Pedido.count++;

@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <h3>Criar Pedido</h3>
+  <div class="row card">
+    <div class="ml-auto mr-auto col-sm-6 mt-2">
+        <div class="form-group">
+            <label for="titulo" class="">Disciplina</label>
+            <input type="text" id="titulo" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="comment">Descrição</label>
+            <textarea class="form-control" rows="5" id="comment"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="titulo" class="">Tags:</label>
+            <input type="text" id="titulo" class="form-control">
+        </div>
+        <button class="btn btn-dark mb-2" (click)="criarPedido()" >Enviar</button>
+    </div>
+  </div>
+</div>

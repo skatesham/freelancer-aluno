@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <h3>Meus Pedidos</h3>
+    <ngb-accordion [closeOthers]="true" activeIds="static-1">
+      <ngb-panel *ngFor="let pedido of pedidos" title="{{pedido.titulo}}">
+        <ng-template ngbPanelContent>
+          <ul class="list-group">
+            <li class="list-group-item"><strong>Disciplina:</strong> {{ pedido.disciplina }}</li>
+            <li class="list-group-item"><strong>Descrição:</strong> {{ pedido.descricao }}</li>
+            <li class="list-group-item">
+              <strong>Tags:</strong>
+              <ul class="list-group">
+                <li *ngFor="let tag of pedido.tags"> {{ tag.nome }}</li>
+              </ul>
+            </li>
+            <li class="list-group-item"><strong>Propostas: </strong> {{pedido.propostas.length}}</li>
+          </ul>
+          <li class="list-group-item"><button class="btn btn-success mr-2"> Propostas</button><button class="ml-2 btn btn-danger"> Excluir Pedido</button></li>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>

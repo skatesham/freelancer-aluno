@@ -1,5 +1,13 @@
-<h3>Todos Pedidos de Ajuda</h3>
 <app-navbar></app-navbar>
+<h3>Todos Pedidos de Ajuda</h3>
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link" routerLink='/criar-pedido'>Criar Pedido</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink='/meus-pedidos'>Meus Pedidos</a>
+  </li>
+</ul>
 <div class="container">
   <ngb-accordion [closeOthers]="true" activeIds="static-1">
     <ngb-panel *ngFor="let pedido of pedidos" title="{{pedido.titulo}}">
@@ -8,11 +16,15 @@
           <li class="list-group-item"><strong>Disciplina:</strong> {{ pedido.disciplina }}</li>
           <li class="list-group-item"><strong>Descrição:</strong> {{ pedido.descricao }}</li>
           <li class="list-group-item">
+            <strong>Tags:</strong>
             <ul class="list-group">
               <li *ngFor="let tag of pedido.tags"> {{ tag.nome }}</li>
             </ul>
           </li>
+          <li class="list-group-item"><strong>Propostas: </strong> {{pedido.propostas.length}}</li>
         </ul>
+        <li class="list-group-item" *ngIf="usuario.id !== pedido.usuario.id"><button class="btn btn-dark"> Enviar Proposta</button></li>
+        <li class="list-group-item" *ngIf="usuario.id === pedido.usuario.id"><a class="btn btn-success">Ver Propostas</a></li>
       </ng-template>
     </ngb-panel>
   </ngb-accordion>

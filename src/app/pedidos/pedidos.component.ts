@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pedido } from '../models/pedido';
 import { PedidosService } from '../pedidos.service';
+import { Usuario } from '../models/usuario';
 
 @Component({
   selector: 'app-pedidos',
@@ -11,7 +12,12 @@ export class PedidosComponent implements OnInit {
 
   pedidos: Pedido[];
 
-  constructor(private pedidosService:PedidosService) { }
+  usuario: Usuario;
+
+  constructor(private pedidosService:PedidosService) {
+    let u = localStorage.getItem('usuario');
+    this.usuario = JSON.parse(u);
+   }
 
   ngOnInit() {
     this.pedidos = this.pedidosService.getPedidos();

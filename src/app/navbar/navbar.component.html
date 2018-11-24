@@ -1,6 +1,24 @@
-<nav>
-    <a class="btn" routerLink='/' routerLinkActive="ativo">Login </a>
-    <a class="btn" routerLink='/perfil' routerLinkActive="ativo">Perfil </a>
-    <a class="btn" routerLink='/pedidos' routerLinkActive="ativo">Pedidos </a>
-    <a class="btn" routerLink='/propostas' routerLinkActive="ativo">Propostas </a>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-dark mb-4 fixed-top">
+  <a class="navbar-brand" routerLink="/perfil"><i class="fas fa-book"></i> Freelancer Aluno</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [class.active]="current == '/perfil'">
+        <a class="nav-link" routerLink='/perfil'>Perfil </a>
+      </li>
+      <li class="nav-item" [class.active]="current == '/pedidos'">
+        <a class="nav-link" routerLink='/pedidos'>Pedidos </a>
+      </li>
+      <li class="nav-item" [class.active]="current == '/propostas'">
+        <a class="nav-link" routerLink='/propostas'>Propostas </a>  
+      </li>
+    </ul>
+    <a class="nav-link text-light" style="cursor: pointer;" (click)="logout()">Logout </a>
+  </div>
 </nav>
+<br>
+<br>
+<br>
