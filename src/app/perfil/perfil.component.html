@@ -1,15 +1,22 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <div class="row">
+  <div class="row text-center">
     <div class="col-sm-3">
       <!--left col-->
 
 
       <div class="text-center">
-        <img [src]="url"
-          class="rounded-circle avatar img-thumbnail" alt="avatar">
-        <h6>Selecione imagem para seu perfil...</h6>
-        <input [(ngModel)]="file"  (change)="uploadFile($event)" type="file" class="text-center center-block file-upload">
+        <img [src]="url" class="rounded-circle avatar img-thumbnail" alt="avatar">
+        <h6>Selecionar imagem para perfil...</h6>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"></span>
+            </div>
+            <div class="custom-file">
+              <input [(ngModel)]="file" (change)="uploadFile($event)" type="file" class="custom-file-input" id="inputGroupFile01">
+              <label class="custom-file-label" for="inputGroupFile01"></label>
+            </div>
+          </div>
       </div>
       <hr>
       <br>
@@ -17,7 +24,9 @@
     <div class="col-sm-9">
       <ul class="list-group">
         <li class="list-group-item">
-          <strong><h3>Perfil</h3></strong></li>
+          <strong>
+            <h3>Perfil</h3>
+          </strong></li>
         <li class="list-group-item">
           <strong>Nick:</strong> {{usuario.nick}}</li>
         <li class="list-group-item">
@@ -27,8 +36,10 @@
       </ul>
       <hr>
       <ul class="list-group">
-          <li class="list-group-item">
-              <strong><h5>Todas Tags</h5></strong>(Area Teste Tags)</li>
+        <li class="list-group-item">
+          <strong>
+            <h5>Todas Tags</h5>
+          </strong>(Area Teste Tags)</li>
         <li class="list-group-item" *ngFor="let tag of tags"> {{ tag.nome }}</li>
       </ul>
     </div>

@@ -1,7 +1,11 @@
 <app-navbar></app-navbar>
 <div class class="container">
-  <p>
-    criarproposta works!
-  </p>
+  <div class="row">
+    <form (ngSubmit)="criarProposta()" #formProposta="ngForm">
+      <div class="form-group">
+        <input type="text" class="form-control">
+      </div>
+
+    </form>
 </div>
 

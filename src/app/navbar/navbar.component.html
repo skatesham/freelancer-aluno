@@ -1,10 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-dark mb-4 fixed-top">
   <a class="navbar-brand" routerLink="/perfil"><i class="fas fa-book"></i> Freelancer Aluno</a>
-  <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">
+  <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+    aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [class.active]="current == '/perfil'">
         <a class="nav-link" routerLink='/perfil'>Perfil </a>
@@ -12,8 +13,14 @@
       <li class="nav-item" [class.active]="current == '/pedidos'">
         <a class="nav-link" routerLink='/pedidos'>Pedidos </a>
       </li>
+      <li class="nav-item" [class.active]="current == '/criar-pedido'">
+        <a class="nav-link" routerLink='/criar-pedido'>Criar Pedido</a>
+      </li>
+      <li class="nav-item" [class.active]="current == '/meus-pedidos'">
+        <a class="nav-link" routerLink='/meus-pedidos'>Meus Pedidos</a>
+      </li>
       <li class="nav-item" [class.active]="current == '/propostas'">
-        <a class="nav-link" routerLink='/propostas'>Propostas </a>
+        <a class="nav-link" routerLink='/propostas'>Minhas Propostas </a>
       </li>
     </ul>
     <a class="nav-link text-light" style="cursor: pointer;" (click)="logout()">Logout </a>

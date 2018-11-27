@@ -1,13 +1,5 @@
 <app-navbar></app-navbar>
 <h3>Todos Pedidos de Ajuda</h3>
-<ul class="nav justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link" routerLink='/criar-pedido'>Criar Pedido</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink='/meus-pedidos'>Meus Pedidos</a>
-  </li>
-</ul>
 <div class="container">
   <ngb-accordion [closeOthers]="true" activeIds="static-1">
     <ngb-panel *ngFor="let pedido of pedidos" title="{{pedido.titulo}}">
