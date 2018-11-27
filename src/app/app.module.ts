@@ -17,17 +17,6 @@ import { PropostasComponent } from './propostas/propostas.component';
 import { PropostapedidosComponent } from './propostapedidos/propostapedidos.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 
-const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'cadastro', component: CadastroComponent},
-  {path: 'perfil', component: PerfilComponent},
-  {path: 'pedidos', component: PedidosComponent},
-  {path: 'criar-pedido', component: CriarpedidoComponent},
-  {path: 'meus-pedidos', component: MeuspedidosComponent},
-  {path: 'propostas', component: PropostasComponent},
-  {path: 'propostas-pedido', component: PropostapedidosComponent},
-]
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +34,6 @@ const routes: Routes = [
     NgbModule,
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes),
     FormsModule
   ],
   providers: [AuthGuardService],

@@ -12,15 +12,18 @@ export class NavbarComponent implements OnInit {
 
   isCollapsed = true;
   
-  constructor(private router:Router) { 
-    if(localStorage.getItem('usuario') == null){
-      alert("Usuario Não Autenticado")
-      this.logout();
-    }
+  constructor(private router:Router) {
+    this.checkLogin();
   }
 
   ngOnInit() {
     this.current = this.router.url;
+  }
+
+  checkLogin(){
+    if(localStorage.getItem('usuario')){
+      this.logout();
+    }
   }
 
   logout(){
