@@ -23,7 +23,7 @@
           </li>
           <li class="list-group-item"><strong>Propostas: </strong> {{ getQuantidadeAberto(pedido) }}</li>
         </ul>
-        <li class="list-group-item" *ngIf="usuario.id !== pedido.usuario.id"><button class="btn btn-dark"> Enviar Proposta</button></li>
+        <li class="list-group-item" *ngIf="usuario.id !== pedido.usuario.id"><button (click)="enviarProposta(pedido)" class="btn btn-dark"> Enviar Proposta</button></li>
         <li class="list-group-item" *ngIf="usuario.id === pedido.usuario.id && getQuantidadeAberto(pedido) > 0"><button class="btn btn-info" (click)="verPropostas(pedido)">Ver Propostas</button></li>
       </ng-template>
     </ngb-panel>

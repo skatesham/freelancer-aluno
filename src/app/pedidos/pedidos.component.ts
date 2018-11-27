@@ -43,4 +43,8 @@ export class PedidosComponent implements OnInit {
     return count;
   }
 
+  enviarProposta(pedido:Pedido){
+    this.router.navigate(['/criar-proposta/'+pedido.id]);
+  }
+
 }

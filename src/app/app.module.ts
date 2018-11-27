@@ -16,6 +16,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { PropostasComponent } from './propostas/propostas.component';
 import { PropostapedidosComponent } from './propostapedidos/propostapedidos.component';
 import { AuthGuardService } from './guards/auth-guard.service';
+import { CriarpropostaComponent } from './criarproposta/criarproposta.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
     CadastroComponent,
     PropostasComponent,
     PropostapedidosComponent,
+    CriarpropostaComponent,
   ],
   imports: [
     NgbModule,
