@@ -1,30 +1,47 @@
 <app-navbar></app-navbar>
 <div class="container">
   <h3>Meus Pedidos</h3>
-    <ngb-accordion [closeOthers]="true" activeIds="static-1">
-      <ngb-panel *ngFor="let pedido of pedidos" title="{{pedido.titulo}}">
-        <ng-template ngbPanelContent>
-          <ul class="list-group">
-            <li class="list-group-item"><strong>Disciplina:</strong> {{ pedido.disciplina }}</li>
-            <li class="list-group-item"><strong>Descrição:</strong> {{ pedido.descricao }}</li>
-            <li class="list-group-item">
-              <strong>Tags:</strong>
-              <ul class="list-group">
-                <li *ngFor="let tag of pedido.tags"> {{ tag.nome }}</li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <p class="alert alert-success" *ngIf="pedido.aberto">Pedido Aberto</p>
-              <p class="alert alert-danger" *ngIf="!pedido.aberto">Pedido Fechado</p>
-            </li>
-            <li class="list-group-item"><strong>Propostas: </strong> {{ getQuantidadeAberto(pedido) }}</li>
-          </ul>
+  <ngb-accordion [closeOthers]="true" activeIds="static-1">
+    <ngb-panel *ngFor="let pedido of pedidos" title="{{pedido.titulo}}">
+      <ng-template ngbPanelContent>
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Disciplina:</strong> {{ pedido.disciplina }}</li>
+          <li class="list-group-item"><strong>Descrição:</strong> {{ pedido.descricao }}</li>
           <li class="list-group-item">
-            <button *ngIf="getQuantidadeAberto(pedido) > 0" (click)="verPropostas(pedido)" class="btn btn-info mr-2"> Propostas</button>
+            <strong>Tags:</strong>
+            <ul class="list-group">
+              <li *ngFor="let tag of pedido.tags"> {{ tag.nome }}</li>
+            </ul>
+          </li>
+          <li class="list-group-item" *ngIf="!pedido.avaliado">
+            <p class="alert alert-success" *ngIf="pedido.aberto">Pedido Aberto</p>
+            <p class="alert alert-danger" *ngIf="!pedido.aberto">Pedido Fechado</p>
+          </li>
+          <li class="list-group-item" *ngIf="!pedido.avaliado"><strong>Propostas: </strong> {{
+            getQuantidadeAberto(pedido) }}</li>
+          <li class="list-group-item" *ngIf="!pedido.avaliado">
+            <button *ngIf="getQuantidadeAberto(pedido) > 0" (click)="verPropostas(pedido)" class="btn btn-info mr-2">
+              Propostas</button>
             <button (click)="fecharPedido(pedido)" *ngIf="pedido.aberto" class="ml-2 btn btn-danger"> Fechar Pedido</button>
             <button (click)="abrirPedido(pedido)" *ngIf="!pedido.aberto" class="ml-2 btn btn-success"> Abrir Pedido</button>
           </li>
-        </ng-template>
-      </ngb-panel>
-    </ngb-accordion>
-  </div>
+          <li class="list-group-item" *ngIf="pedido.avaliado">
+            <ul class="list-group">
+              <li class="list-group-item bg-warning">
+                <h5>Proposta</h5>
+              </li>
+              <li class="list-group-item"><strong>Titulo:</strong> {{ pedido.proposta.titulo }}</li>
+              <li class="list-group-item"><strong>Descrição:</strong> {{ pedido.proposta.descricao }}</li>
+              <li class="list-group-item bg-success">
+                <h5>Contato</h5>
+              </li>
+              <li class="list-group-item"><strong>Nick:</strong> {{ pedido.proposta.usuario.nick }}</li>
+              <li class="list-group-item"><strong>Email:</strong> {{ pedido.proposta.usuario.email }}</li>
+              <li class="list-group-item"><strong>Telefone:</strong> {{ pedido.proposta.usuario.tel }}</li>
+            </ul>
+          </li>
+        </ul>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+</div>

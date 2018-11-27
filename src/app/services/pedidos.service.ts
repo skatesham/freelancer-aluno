@@ -3,6 +3,7 @@ import { pedidos } from '../models/mock-pedidos';
 import { Pedido } from '../models/pedido';
 import { Usuario } from '../models/usuario';
 import { propostas } from '../models/mock-propostas';
+import { Proposta } from '../models/proposta';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +61,33 @@ export class PedidosService {
       }
     }
   }
+
+  getPedidoById(id:number){
+    for (let index = 0; index < pedidos.length; index++) {
+      const element = pedidos[index];
+      if(element.id == id){
+        return element;
+      }
+    }
+  }
+
+  setPedido(pedido:Pedido){
+    for (let index = 0; index < pedidos.length; index++) {
+      const element = pedidos[index];
+      if(element.id == pedido.id){
+        pedidos[index] = pedido;
+        break;
+      }
+    }
+  }
+
+  aceitarPedido(pedido:Pedido, proposta:Proposta){
+    pedido.avaliado = true;
+    pedido.aberto = false;
+    pedido.proposta = proposta;
+    this.setPedido(pedido);
+    return pedido
+  }
+  
 
 }

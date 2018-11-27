@@ -57,4 +57,21 @@ export class PropostasService {
     });
   }
   
+  setProposta(proposta:Proposta){
+    for (let index = 0; index < propostas.length; index++) {
+      const p:Proposta = propostas[index];
+      if(p.id === proposta.id){
+        propostas[index] = proposta;
+        break;
+      }
+    }
+  }
+
+  reponderProposta(resposta:boolean, proposta:Proposta): Proposta{
+    proposta.avaliado = true;
+    proposta.aceita = resposta;
+    this.setProposta(proposta);
+    return proposta;
+  }
+  
 }

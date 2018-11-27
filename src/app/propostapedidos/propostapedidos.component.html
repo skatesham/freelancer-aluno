@@ -1,16 +1,25 @@
 <app-navbar></app-navbar>
-<h3>Minhas Propostas</h3>
+<h3>Propostas do pedido</h3>
 <div class="container">
     <ngb-accordion [closeOthers]="true" activeIds="static-1">
-        <ngb-panel *ngFor="let proposta of propostas" title="{{proposta.titulo}}">
+        <ngb-panel *ngFor="let proposta of propostas" [title]="proposta.titulo">
             <ng-template ngbPanelContent>
                 <ul class="list-group">
+                    <li class="list-group-item" *ngIf="!proposta.avaliado">
+                        <p class="alert alert-warning">Proposta não Avalida</p>
+                    </li>
+                    <li class="list-group-item" *ngIf="proposta.avaliado">
+                        <p class="alert alert-success" *ngIf="proposta.aceita">Proposta Aceita</p>
+                        <p class="alert alert-danger" *ngIf="!proposta.aceita">Proposta Recusada</p>
+                    </li>
                     <li class="list-group-item"><strong>Descrição:</strong> {{ proposta.descricao }}</li>
                     <li class="list-group-item"><strong>Usuario:</strong> {{ proposta.usuario.nick }}</li>
                     <li class="list-group-item">
                         <ul class="list-group">
-                                <li class="list-group-item"><h3>Pedido:</h3></li>
-                                <li class="list-group-item"><strong>Título:</strong> {{ proposta.pedido.titulo }}</li>
+                            <li class="list-group-item" [class.bg-danger]="proposta.avaliado">
+                                <h3>Pedido:</h3>
+                            </li>
+                            <li class="list-group-item"><strong>Título:</strong> {{ proposta.pedido.titulo }}</li>
                             <li class="list-group-item"><strong>Disciplina:</strong> {{ proposta.pedido.disciplina }}</li>
                             <li class="list-group-item"><strong>Descrição:</strong> {{ proposta.pedido.descricao }}</li>
                             <li class="list-group-item">
@@ -21,26 +30,15 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="list-group-item">
-                        <p class="alert alert-success" *ngIf="proposta.aberto">Proposta Aberta</p>
-                        <p class="alert alert-danger" *ngIf="!proposta.aberto">Proposta Fechada</p>
-                    </li>
                     <li class="list-group-item" *ngIf="!proposta.avaliado">
-                        <p class="alert alert-warning">Proposta não Avalida</p>
-                    </li>
-                    <li class="list-group-item" *ngIf="proposta.avaliado">
-                        <p class="alert alert-success" *ngIf="proposta.aceita">Proposta Aceita</p>
-                        <p class="alert alert-danger" *ngIf="!proposta.aceita">Proposta Recusada</p>
+                        <button (click)="responderProposta(true, proposta)" class="ml-2 btn btn-success">
+                            Aceitar
+                            Proposta</button>
+                        <button (click)="responderProposta(false, proposta)" class="ml-2 btn btn-danger">
+                            Recusar
+                            Proposta</button>
                     </li>
                 </ul>
-                <li class="list-group-item">
-                    <button (click)="aceitarProposta(proposta)" class="ml-2 btn btn-success">
-                        Aceitar
-                        Proposta</button>
-                    <button (click)="recusarProposta(proposta)" class="ml-2 btn btn-danger">
-                        Recusar
-                        Proposta</button>
-                </li>
             </ng-template>
         </ngb-panel>
     </ngb-accordion>

@@ -9,8 +9,8 @@
                     <li class="list-group-item"><strong>Usuario:</strong> {{ proposta.usuario.nick }}</li>
                     <li class="list-group-item"><strong>Pedido: </strong> {{proposta.pedido.titulo}}</li>
                     <li class="list-group-item">
-                        <p class="alert alert-success" *ngIf="proposta.aberto">Proposta Aberta</p>
-                        <p class="alert alert-danger" *ngIf="!proposta.aberto">Proposta Fechada</p>
+                        <p class="alert alert-success" *ngIf="proposta.aberto && !proposta.avaliado">Proposta Aberta</p>
+                        <p class="alert alert-danger" *ngIf="!proposta.aberto && !proposta.avaliado">Proposta Fechada</p>
                     </li>
                     <li class="list-group-item" *ngIf="!proposta.avaliado">
                         <p class="alert alert-warning">Proposta não Avalida</p>
@@ -20,7 +20,7 @@
                         <p class="alert alert-danger" *ngIf="!proposta.aceita">Proposta Recusada</p>
                     </li>
                 </ul>
-                <li class="list-group-item">
+                <li class="list-group-item" *ngIf="!proposta.avaliado">
                     <button (click)="fecharProposta(proposta)" *ngIf="proposta.aberto" class="ml-2 btn btn-danger">
                         Fechar
                         Proposta</button>
