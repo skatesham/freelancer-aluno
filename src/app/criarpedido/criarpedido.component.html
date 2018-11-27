@@ -1,12 +1,14 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <h3>Criar Pedido</h3>
+    <div class="jumbotron bg-dark text-light">
+        <h1>Criar Pedido</h1>
+        <p>Para a criação de pedidos, deve-se ser breve e preciso no assunto e
+            necessidade requerida,
+            as normas do Freelancer Aluno não permite palavrões e falta de respeito, sujeito a perca de permissão
+            da conta. </p>
+    </div>
     <div class="row">
-
         <div class="ml-auto mr-auto col-md-6 mt-2">
-            <!-- Informações para criação de pedidos -->
-            <div class="alert alert-success">Para a criação de pedidos, deve-se ser breve e preciso no assunto e necessidade requerida,
-                as normas do Freelancer Aluno não permite palavrões e falta de respeito, sujeito a perca de permissão da conta. </div>
             <!-- Formulários para Criar Pedido-->
             <form (ngSubmit)="criarPedido()" #pedidoForm="ngForm">
                 <!-- Input Título  -->
@@ -14,7 +16,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Título</span>
                     </div>
-                    <input [(ngModel)]="pedido.titulo" #tit="ngModel" name="titulo" class="form-control" minlength="6" maxlength="30" required/>
+                    <input [(ngModel)]="pedido.titulo" #tit="ngModel" name="titulo" class="form-control" minlength="6"
+                        maxlength="30" required />
                 </div>
                 <!-- Alerta Título -->
                 <div [hidden]="tit.valid" class="alert alert-danger">Título deve conter entre 6 a 30 caracteres</div>
@@ -24,7 +27,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Disciplina</span>
                     </div>
-                    <input [(ngModel)]="pedido.disciplina" #disc="ngModel" name="disciplina" class="form-control" minlength="15" maxlength="30" required/>
+                    <input [(ngModel)]="pedido.disciplina" #disc="ngModel" name="disciplina" class="form-control"
+                        minlength="15" maxlength="30" required />
                 </div>
                 <!-- Alerta Discplina -->
                 <div [hidden]="disc.valid" class="alert alert-danger">Deve conter de 15 a 30 caracteres</div>
@@ -34,22 +38,25 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Descrição</span>
                     </div>
-                    <textarea [(ngModel)]="pedido.descricao" #desc="ngModel" name="descricao" class="form-control" minlength="30" maxlength="200" required></textarea>
+                    <textarea [(ngModel)]="pedido.descricao" #desc="ngModel" name="descricao" class="form-control"
+                        minlength="30" maxlength="200" required></textarea>
                 </div>
                 <!-- Alerta Descrição -->
                 <div [hidden]="desc.valid" class="alert alert-danger"> Deve conter de 30 a 200 caracteres</div>
-                
+
                 <!-- Input para Tags -->
                 <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Tags</span>
-                        </div>
-                        <input [(ngModel)]="pedido.tagString" #tag="ngModel" name="tagString" class="form-control" minlength="3" maxlength="15" required/>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Tags</span>
                     </div>
-                    <small class="text text-muted  mb-3">As tags devem ser separadas com espaço, exemplo: 'ads ihc script'</small>
-                    <!-- Alerta Discplina -->
-                    <div [hidden]="tag.valid" class="alert alert-danger">Mínimo conter uma tag com mínimo 3 caracteres</div>
-    
+                    <input [(ngModel)]="pedido.tagString" #tag="ngModel" name="tagString" class="form-control"
+                        minlength="3" maxlength="15" required />
+                </div>
+                <p class="text text-muted form-text mb-3">As tags devem ser separadas com espaço, exemplo: 'ads ihc
+                    script'</p>
+                <!-- Alerta Discplina -->
+                <div [hidden]="tag.valid" class="alert alert-danger">Necessário conter uma tag com mínimo 3 caracteres</div>
+
                 <!-- Botão Submit -->
                 <button [disabled]="!pedidoForm.form.valid" class="btn btn-block btn-dark mb-3">Realizar Pedido</button>
             </form>

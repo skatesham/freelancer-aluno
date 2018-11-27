@@ -1,6 +1,10 @@
 <app-navbar></app-navbar>
-<h3>Minhas Propostas</h3>
 <div class="container">
+    <div class="jumbotron bg-dark text-light">
+        <h1>Minhas Propostas</h1>
+        <p>Aqui encontram-se todos as propostas ofertadas e suas respostas, como tambem podendo desativalas caso não
+            foram avaliadas ainda.</p>
+    </div>
     <ngb-accordion [closeOthers]="true" activeIds="static-1">
         <ngb-panel *ngFor="let proposta of propostas" title="{{proposta.titulo}}">
             <ng-template ngbPanelContent>

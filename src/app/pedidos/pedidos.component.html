@@ -1,6 +1,10 @@
 <app-navbar></app-navbar>
-<h3>Todos Pedidos de Ajuda</h3>
 <div class="container">
+  <div class="jumbotron bg-dark text-light">
+      <h1>Todos Pedidos</h1>
+      <p>Aqui encontram-se todos os pedidos de ajudas abertos disponíveis do Freelancer Aluno.</p>
+      <p>Os pedidos podem ser analisados e enviar propostas pela lista abaixo.</p>
+  </div>
   <ngb-accordion [closeOthers]="true" activeIds="static-1">
     <ngb-panel *ngFor="let pedido of pedidos" title="{{pedido.titulo}}">
       <ng-template ngbPanelContent>
@@ -15,8 +19,8 @@
           </li>
           <li class="list-group-item"><strong>Propostas: </strong> {{ getQuantidadeAberto(pedido) }}</li>
         </ul>
-        <li class="list-group-item" *ngIf="usuario.id !== pedido.usuario.id"><button (click)="enviarProposta(pedido)" class="btn btn-dark"> Enviar Proposta</button></li>
-        <li class="list-group-item" *ngIf="usuario.id === pedido.usuario.id && getQuantidadeAberto(pedido) > 0"><button class="btn btn-info" (click)="verPropostas(pedido)">Ver Propostas</button></li>
+        <li class="list-group-item" *ngIf="usuario.id !== pedido.usuario.id"><button (click)="enviarProposta(pedido)" class="btn btn-success btn-block">Enviar Proposta</button></li>
+        <li class="list-group-item" *ngIf="usuario.id === pedido.usuario.id && getQuantidadeAberto(pedido) > 0"><button class="btn btn-info btn-block" (click)="verPropostas(pedido)">Ver Propostas</button></li>
       </ng-template>
     </ngb-panel>
   </ngb-accordion>

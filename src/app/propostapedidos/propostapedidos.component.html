@@ -1,6 +1,11 @@
 <app-navbar></app-navbar>
-<h3>Propostas do pedido</h3>
 <div class="container">
+    <div class="jumbotron bg-dark text-light">
+        <h1>Propostas do pedido</h1>
+        <p>Aqui encontram-se todas propostas abertas recebidas do seu pedido. Esse local onde pode avaliar seus pedidos.
+            Deve-se saber que somente é possível aceitar uma proposta, então analise bem sua decisão.
+        </p>
+    </div>
     <ngb-accordion [closeOthers]="true" activeIds="static-1">
         <ngb-panel *ngFor="let proposta of propostas" [title]="proposta.titulo">
             <ng-template ngbPanelContent>

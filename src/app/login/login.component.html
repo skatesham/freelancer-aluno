@@ -1,6 +1,12 @@
-<h1>Freelancer Aluno</h1>
+
 <div class='my-login-page text-center'>
   <div class='container h-100'>
+    <div class="jumbotron bg-dark text-light">
+      <h1>Freelancer Aluno</h1>
+      <p>O Freelancer Aluno é um sistema para pedidos de auxilio com estudo, onde pode-se enviar pedidos de ajuda e 
+        receber propostas. Para utilizar o sistema é necessário realizar o login. A criação de conta é gratuita.
+      </p>
+    </div>
     <div class='row justify-content-center h-100'>
       <div class='card-wrapper'>
         <div class='card fat'>
@@ -10,7 +16,8 @@
               <div class='form-group'>
                 <label for='email'>Email</label>
 
-                <input [(ngModel)]='email' id='email' type='email' class='form-control' name='email' value='' required autofocus>
+                <input [(ngModel)]='email' id='email' type='email' class='form-control' name='email' value='' required
+                  autofocus>
               </div>
 
               <div class='form-group'>
@@ -20,12 +27,13 @@
                     <small>Esqueceu a senha?</small>
                   </a>
                 </label>
-                <input [(ngModel)]='password' id='password' type='password' class='form-control' name='password' required data-eye>
+                <input [(ngModel)]='password' id='password' type='password' class='form-control' name='password'
+                  required data-eye>
               </div>
-              
+
               <div *ngIf="erro" class="alert alert-danger"> {{ erroDesc }}</div>
 
-              <div class='form-group' hidden >
+              <div class='form-group' hidden>
                 <label>
                   <input type='checkbox' name='remember'> Lembrar
                 </label>

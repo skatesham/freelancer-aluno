@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body{
+    background-image: url('assets/background.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+::ng-template{
+    background-color: red;;
+}

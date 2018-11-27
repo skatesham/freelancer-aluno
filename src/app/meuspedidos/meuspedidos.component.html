@@ -1,9 +1,13 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <h3>Meus Pedidos</h3>
+  <div class="jumbotron bg-dark text-light">
+    <h1>Meus Pedidos</h1>
+    <p>Aqui encontram-se todos os pedidos realizados e pode-se gerenciar seus pedidos. Aqui também local onde pode-se
+      aceitar uma proposta para seu pedido.</p>
+  </div>
   <ngb-accordion [closeOthers]="true" activeIds="static-1">
     <ngb-panel *ngFor="let pedido of pedidos" title="{{pedido.titulo}}">
-      <ng-template ngbPanelContent>
+      <ng-template ngbPanelContent style="background-color: red;">
         <ul class="list-group">
           <li class="list-group-item"><strong>Disciplina:</strong> {{ pedido.disciplina }}</li>
           <li class="list-group-item"><strong>Descrição:</strong> {{ pedido.descricao }}</li>
