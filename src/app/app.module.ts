@@ -15,6 +15,7 @@ import { MeuspedidosComponent } from './meuspedidos/meuspedidos.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { PropostasComponent } from './propostas/propostas.component';
 import { PropostapedidosComponent } from './propostapedidos/propostapedidos.component';
+import { AuthGuardService } from './guards/auth-guard.service';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -47,7 +48,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
