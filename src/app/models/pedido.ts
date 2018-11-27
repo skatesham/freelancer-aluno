@@ -14,10 +14,11 @@ export class Pedido {
     propostas: Proposta[];
     proposta: Proposta;
     tags: Tag[];
+    tagString:string;
     aberto: boolean;
     avaliado:boolean;
 
-    constructor(usuario:Usuario, titulo:string, disciplina:string, descricao:string, tags: Tag[]){
+    constructor(usuario:Usuario, titulo:string, disciplina:string, descricao:string, tags: Tag[], tagString?:string){
         
         this.id = Pedido.count;
         this.usuario = usuario;
@@ -29,6 +30,9 @@ export class Pedido {
         this.aberto = true;
         this.avaliado = false;
         this.proposta = null;
+
+        this.tagString = tagString;
+
         Pedido.count++;
     }
 

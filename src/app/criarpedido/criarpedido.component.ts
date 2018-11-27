@@ -5,6 +5,7 @@ import { Usuario } from '../models/usuario';
 import { Tag } from '../models/tag';
 import { tags } from '../models/mock-tags';
 import { TagsService } from '../services/tags.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-criarpedido',
@@ -13,49 +14,30 @@ import { TagsService } from '../services/tags.service';
 })
 export class CriarpedidoComponent implements OnInit {
 
-  // ngModel to novo pedido
-  titulo:string = 'Problemas com blog Flask ';
-  disciplina:string = 'Laboratório de Banco de Dados';
-  descricao:string = 'Não estou conseguindo criar uma arquitetura adequada para Flask usando MongoDb';
-  tags:string = 'mongodb flask ads';
-  usuario:Usuario;
-  
-  // atributos para alerta
-  alerta:string;
-  sucesso:boolean = false;
-  falha:boolean = false;
-  
-  constructor(private pedidosService:PedidosService, private tagsService:TagsService) {
+  usuario: Usuario;
+  pedido: Pedido = new Pedido(null, 'Problemas com blog Flask', 'Laboratório de Banco de Dados', 'Não estou conseguindo criar uma arquitetura adequada para Flask usando MongoDb', null, 'ads');
+
+  constructor(private router:Router, private pedidosService: PedidosService, private tagsService: TagsService) {
     let u = localStorage.getItem('usuario');
     this.usuario = JSON.parse(u);
-   }
+  }
 
   ngOnInit() {
   }
 
-  criarPedido(): void{
-    let pedido:Pedido;
-    let listaTags:Tag[] = new Array<Tag>();
-    this.tags.split(' ').forEach(t => {
+  criarPedido(): void {
+    // Tramento das tags em texto separadas por espaço
+    let listaTags: Tag[] = new Array<Tag>();
+    this.pedido.tagString.split(' ').forEach(t => {
       let tag = this.tagsService.getOrCreateTag(t);
       listaTags.push(tag);
     });
-    pedido = new Pedido(this.usuario,this.disciplina, this.titulo, this.descricao, listaTags);
-    this.pedidosService.criarPedido(pedido);
-    this.titulo = '';
-    this.disciplina = '';
-    this.descricao = '';
-    this.tags = '';
-    this.mostrarAlerta("Pedido criado com sucesso!", true);
 
+    // criação do pedido
+    this.pedido.usuario = this.usuario;
+    this.pedido.tags = listaTags;
+    this.pedidosService.criarPedido(this.pedido);
+    this.router.navigate(['/pedidos']);
   }
 
-  mostrarAlerta(texto:string, sucesso:boolean){
-    this.alerta = texto;
-    if(sucesso){
-      this.sucesso = sucesso;
-    } else {
-      this.falha = sucesso;
-    }
-  }
 }
