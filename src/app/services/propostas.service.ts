@@ -73,5 +73,9 @@ export class PropostasService {
     this.setProposta(proposta);
     return proposta;
   }
+
+  adicionarProposta(proposta:Proposta){
+    propostas.push(proposta);
+  }
   
 }

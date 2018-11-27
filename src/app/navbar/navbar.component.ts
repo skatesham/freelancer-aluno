@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   isCollapsed = true;
   
   constructor(private router:Router) {
-    //this.checkLogin();
+    this.checkLogin();
   }
 
   ngOnInit() {
@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
   }
 
   checkLogin(){
-    if(localStorage.getItem('usuario')){
+    if(!localStorage.getItem('usuario')){
       this.logout();
     }
   }

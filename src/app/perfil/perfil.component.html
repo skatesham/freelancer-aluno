@@ -10,10 +10,10 @@
         <h6>Selecionar imagem para perfil...</h6>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text"></span>
+              <span class="input-group-text">Enviar</span>
             </div>
             <div class="custom-file">
-              <input [(ngModel)]="file" (change)="uploadFile($event)" type="file" class="custom-file-input" id="inputGroupFile01">
+              <input [(ngModel)]="file" (change)="uploadFile($event)" data-buttonText="123" type="file" class="custom-file-input" id="inputGroupFile01">
               <label class="custom-file-label" for="inputGroupFile01"></label>
             </div>
           </div>

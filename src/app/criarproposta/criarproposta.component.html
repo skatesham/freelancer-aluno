@@ -1,11 +1,52 @@
 <app-navbar></app-navbar>
 <div class class="container">
+  <h3>Enviar Proposta</h3>
   <div class="row">
-    <form (ngSubmit)="criarProposta()" #formProposta="ngForm">
-      <div class="form-group">
-        <input type="text" class="form-control">
+    <div class="col-md-6 ml-auto mr-auto">
+      <div class="mb-3">
+        <ul class="list-group">
+            <li class="list-group-item bg-success">
+                <strong>Detalhes do pedido</strong>
+              </li>
+          <li class="list-group-item">
+            <strong>Título do pedido: </strong>
+            {{pedido.titulo}}
+          </li>
+          <li class="list-group-item">
+              <strong>Descrição do pedido: </strong>
+              {{pedido.descricao}}
+            </li>
+        </ul>
       </div>
+      <h4>Proposta</h4>
+      <form (ngSubmit)="enviarProposta()" #propostaForm="ngForm">
 
-    </form>
-</div>
+        <!-- Input Titulo -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Título</span>
+          </div>
+          <input [(ngModel)]="proposta.titulo" #titulo="ngModel" name="titulo" type="text" class="form-control" aria-label="Título da proposta" maxlength="30" minlength="6" required>
+          <div class="input-group-append">
+            <span class="input-group-text"></span>
+        </div>
+      </div>
+      <!--Alerta Título Invalido-->
+      <div [hidden]="titulo.valid || titulo.prestine" class="alert alert-danger">Título é necessário de 6 a 30 caracteres</div>
 
+      <!-- Input Descrição -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Descição</span>
+          </div>
+          <textarea [(ngModel)]="proposta.descricao" #descricao="ngModel" name="descricao" class="form-control" aria-label="Descição" maxlength="200" minlength="30" required></textarea>
+        </div>
+        <!--Alerta Descição Invalido-->
+        <div [hidden]="descricao.valid || descricao.prestine" class="alert alert-danger">Descrição precisa ter de 30 a 200 caracteres</div>
+        
+        <!-- Submit Button -->
+        <button [disabled]="!propostaForm.form.valid" class="btn btn-block btn-dark" type="submit">Enviar Proposta</button>
+      </form>
+    </div>
+
+  </div>
