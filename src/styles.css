@@ -2,6 +2,7 @@
 
 html, body{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: 100%;
 }
 
 body{
@@ -10,8 +11,4 @@ body{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-}
-
-::ng-template{
-    background-color: red;;
 }

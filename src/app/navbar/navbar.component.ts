@@ -11,13 +11,18 @@ export class NavbarComponent implements OnInit {
   current: string;
 
   isCollapsed = true;
-  
+
   constructor(private router:Router) {
-    this.checkLogin();
+    //this.checkLogin();
   }
 
   ngOnInit() {
     this.current = this.router.url;
+  }
+  
+  logout(){
+    localStorage.setItem('usuario', null);
+    this.router.navigateByUrl('/');
   }
 
   checkLogin(){
@@ -26,9 +31,6 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  logout(){
-    localStorage.setItem('usuario', null);
-    this.router.navigateByUrl('/');
-  }
+
 
 }

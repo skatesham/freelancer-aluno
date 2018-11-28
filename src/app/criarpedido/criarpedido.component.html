@@ -52,10 +52,13 @@
                     <input [(ngModel)]="pedido.tagString" #tag="ngModel" name="tagString" class="form-control"
                         minlength="3" maxlength="15" required />
                 </div>
-                <p class="text text-muted form-text mb-3">As tags devem ser separadas com espaço, exemplo: 'ads ihc
+                <p class="text text-light form-text mb-3">As tags devem ser separadas com espaço, exemplo: 'ads ihc
                     script'</p>
                 <!-- Alerta Discplina -->
                 <div [hidden]="tag.valid" class="alert alert-danger">Necessário conter uma tag com mínimo 3 caracteres</div>
+
+                <!-- Check usuario setted to create -->
+                <input [(ngModel)]="pedido.usuario" #user="ngModel" name="usuario" hidden/>
 
                 <!-- Botão Submit -->
                 <button [disabled]="!pedidoForm.form.valid" class="btn btn-block btn-dark mb-3">Realizar Pedido</button>
