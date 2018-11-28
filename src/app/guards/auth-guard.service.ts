@@ -14,13 +14,14 @@ export class AuthGuardService implements CanActivate{
   }
 
   canActivate() : boolean{
-    console.log(this.usuario.nick);
+    //console.log(this.usuario.nick);
     if(this.usuario == null){
-      this.router.navigate(['/']); 
-      console.log("Não Autenticado");
+      this.router.navigate(['/']);
+      alert("Não Autenticado");
+      //console.log("Não Autenticado");
       return false;
     }
-    console.log("Autenticado");
+    //console.log("Autenticado");
     return true;
   }
 }

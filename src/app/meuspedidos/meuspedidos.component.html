@@ -7,7 +7,7 @@
   </div>
   <ngb-accordion [closeOthers]="true" activeIds="static-1">
     <ngb-panel *ngFor="let pedido of pedidos" title="{{pedido.titulo}}">
-      <ng-template ngbPanelContent style="background-color: red;">
+      <ng-template ngbPanelContent>
         <ul class="list-group">
           <li class="list-group-item"><strong>Disciplina:</strong> {{ pedido.disciplina }}</li>
           <li class="list-group-item"><strong>Descrição:</strong> {{ pedido.descricao }}</li>
