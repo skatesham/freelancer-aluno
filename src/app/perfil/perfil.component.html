@@ -1,11 +1,19 @@
+<!-- NavBar Componente -->
 <app-navbar></app-navbar>
+
 <div class="container">
+
+  <!-- Description -->
   <div class="jumbotron bg-dark text-light">
     <h1>Meu Perfil</h1>
     <p>Aqui encontram-se os dados da sua conta e possibilita alterar alguns de seus dados.</p>
   </div>
+
+  
   <div class="row text-center">
+    <!-- Coluna da esquerda-->
     <div class="col-sm-3">
+      <!-- Imagem e Input file-->
       <div class="text-center">
         <img [src]="url" class="rounded-circle avatar img-thumbnail" alt="avatar">
         <h6>Selecionar imagem para perfil...</h6>
@@ -23,7 +31,10 @@
       <hr>
       <br>
     </div>
+
+    <!-- Coluna da Direita-->
     <div class="col-sm-9">
+      <!-- User information -->
       <ul class="list-group">
         <li class="list-group-item">
           <strong>
@@ -37,7 +48,32 @@
           <strong>Telefone:</strong> {{usuario.tel}}</li>
       </ul>
       <hr>
-      <ul class="list-group">
+      <!-- Form Modelo para alterar os dados-->
+      <form (ngSubmit)="salvarInfo()">
+        <h3 class="text-light bg-dark card">Alterar dados</h3>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Nick</span>
+          </div>
+          <input class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Email</span>
+          </div>
+          <input class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Telefone</span>
+          </div>
+          <input class="form-control">
+        </div>
+        <button class="btn btn-block btn-warning" disabled>Salvar Informações</button>
+      </form>
+
+      <!-- Mostrar todas Tags DESATIVADO-->
+      <ul class="list-group" hidden>
         <li class="list-group-item">
           <strong>
             <h5>Todas Tags</h5>

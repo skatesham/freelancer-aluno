@@ -16,7 +16,7 @@ export class Usuario {
     propostas: Array<Proposta>;
     
 
-    constructor(nick: string, email: string, senha: string, tel: string){
+    constructor(nick: string, email: string, senha: string, tel: string, imagem?:string){
         this.id = Usuario.count;
         this.nick = nick;
         this.email = email;
@@ -25,6 +25,9 @@ export class Usuario {
         this.pedidos = [];
         this.propostas = [];
         this.imagem = Usuario.angularImg;
+        if(imagem){
+            this.imagem = imagem;
+        }
         Usuario.count++;
     }
 
