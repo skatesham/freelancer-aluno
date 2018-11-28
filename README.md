@@ -2,7 +2,7 @@
 Aplicação Front-End Angular 6 visual para pedido de ajuda para matérias da faculdade e propostas de aulas. Esta foi desenvolvida com um mock do sistema com classes typescript para posteriormente ser integrado a um API REST.
 
 ## Implantação
-Este sistema está implantado no github pages no link: https://skatesham.github.io/freelancer-aluno/.
+Este sistema está implantado no github pages no link: https://skatesham.github.io/freelancer-aluno/freelancer-aluno/.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
 
