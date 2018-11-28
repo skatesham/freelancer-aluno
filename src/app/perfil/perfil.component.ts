@@ -48,4 +48,8 @@ export class PerfilComponent implements OnInit {
       reader.readAsDataURL(this.file);
     }
   }
+  
+  salvarInfo(){
+    
+  }
 }
