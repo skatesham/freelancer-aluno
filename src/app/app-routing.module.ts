@@ -12,6 +12,7 @@ import { PropostasComponent } from './propostas/propostas.component';
 import { PropostapedidosComponent } from './propostapedidos/propostapedidos.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { CriarpropostaComponent } from './criarproposta/criarproposta.component';
+import { PoscadastroComponent } from './poscadastro/poscadastro.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: 'propostas', component: PropostasComponent, canActivate:[AuthGuardService]},
   {path: 'propostas-pedido', component: PropostapedidosComponent, canActivate:[AuthGuardService]},
   {path: 'criar-proposta/:id', component:CriarpropostaComponent, canActivate:[AuthGuardService]},
-  {path: '**', component: LoginComponent, canActivate:[AuthGuardService]},
+  {path: 'poscadastro', component:PoscadastroComponent, canActivate:[AuthGuardService]},
+  {path: '**', component: LoginComponent},
 ]
 
 

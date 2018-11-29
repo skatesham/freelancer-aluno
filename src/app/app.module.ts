@@ -25,6 +25,7 @@ import { PropostapedidosComponent } from './propostapedidos/propostapedidos.comp
 import { AuthGuardService } from './guards/auth-guard.service';
 import { CriarpropostaComponent } from './criarproposta/criarproposta.component';
 import { SigninComponent } from './signin/signin.component';
+import { PoscadastroComponent } from './poscadastro/poscadastro.component';
 
 
 // Configs 
@@ -62,6 +63,7 @@ export function getAuthServiceConfigs() {
     PropostapedidosComponent,
     CriarpropostaComponent,
     SigninComponent,
+    PoscadastroComponent,
   ],
   imports: [
     NgbModule,

@@ -7,6 +7,7 @@ import {
 } from 'angular-6-social-login';
 import { Usuario } from '../models/usuario';
 import { Router } from '@angular/router';
+import { UsuariosService } from '../services/usuarios.service';
 
 @Component({
   selector: 'app-signin',
@@ -17,7 +18,7 @@ import { Router } from '@angular/router';
 
 export class SigninComponent implements OnInit {
 
-  constructor( private socialAuthService: AuthService, private router:Router ) {}
+  constructor( private socialAuthService: AuthService, private router:Router, private usuariosService: UsuariosService ) {}
   
   public socialSignIn(socialPlatform : string) {
     let socialPlatformProvider;
@@ -33,9 +34,19 @@ export class SigninComponent implements OnInit {
       (userData) => {
         console.log(socialPlatform+" sign in data : " , userData);
         // Now sign-in with userData
-        let usuario:Usuario = new Usuario(userData.name, userData.email, null, null, userData.image);
-        localStorage.setItem("usuario", JSON.stringify(usuario));
-        this.router.navigate(['/perfil']);
+        //console.log(userData);
+
+        // Tratando novo usuario Google e Facebook
+        let email = userData.email;
+        let usuario:Usuario = this.usuariosService.getUsuarioByEmail(email);
+        if(usuario != null){
+          this.router.navigate(['/perfil']);
+          localStorage.setItem("usuario", JSON.stringify(usuario));
+        } else {
+          usuario = new Usuario('', userData.email, userData.token, '', userData.image); 
+          localStorage.setItem("usuario", JSON.stringify(usuario));     
+          this.router.navigate(['/poscadastro']);
+        }
       }
     );
   }

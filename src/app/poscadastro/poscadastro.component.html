@@ -1,0 +1,46 @@
+<div class='container h-100'>
+  <div class="jumbotron bg-dark text-light">
+    <h1>Cadastro</h1>
+    <p>Aqui você completa seu cadastro para ter acesso ao sistema.
+    </p>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 mr-auto ml-auto">
+
+      <form (ngSubmit)="posCadastro()" #poscadastroForm="ngForm">
+        
+        <!-- Input Titulo -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Nick</span>
+          </div>
+          <input [(ngModel)]="usuario.nick" #nickname="ngModel" name="nick" type="text" class="form-control"
+            aria-label="Título da proposta" maxlength="15" minlength="5" required>
+          <div class="input-group-append">
+            <span class="input-group-text"></span>
+          </div>
+        </div>
+        <!--Alerta Título Invalido-->
+        <div [hidden]="nickname.valid || nickname.prestine" class="alert alert-danger">Nick deve conter mínimo 5 caracteres</div>
+
+        <!-- Input Titulo -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Telefone</span>
+          </div>
+          <input [(ngModel)]="usuario.tel" #telefone="ngModel" name="telefone" type="text" class="form-control"
+            aria-label="Título da proposta" maxlength="11" minlength="11" required>
+          <div class="input-group-append">
+            <span class="input-group-text"></span>
+          </div>
+        </div>
+        <!--Alerta Título Invalido-->
+        <div [hidden]="telefone.valid || telefone.prestine" class="alert alert-danger">O telefone deve conter o DDD e o
+          telefone juntos e conter 11 caracteres</div>
+        <!-- Submit Button -->
+        <button [disabled]="!poscadastroForm.form.valid" class="btn btn-block btn-dark" type="submit">Enviar Proposta</button>
+      </form>
+
+    </div>
+  </div>
+</div>
