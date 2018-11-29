@@ -18,13 +18,16 @@ export class PerfilComponent implements OnInit {
   file;
   url: any;
 
+  // Form tratamento
+  esconder: boolean = true;
+
   constructor(
     private usuariosService: UsuariosService,
     private tagsService: TagsService,
     private domSanitizer: DomSanitizer) {
     let u = localStorage.getItem('usuario');
     this.usuario = JSON.parse(u);
-    
+
   }
 
   ngOnInit() {
@@ -48,8 +51,8 @@ export class PerfilComponent implements OnInit {
       reader.readAsDataURL(this.file);
     }
   }
-  
-  salvarInfo(){
-    
+
+  salvarInfo() {
+
   }
 }

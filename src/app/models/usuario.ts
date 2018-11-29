@@ -14,6 +14,11 @@ export class Usuario {
     imagem:string;
     pedidos: Array<Pedido>;
     propostas: Array<Proposta>;
+
+    github:string;
+    linkedin:string;
+    facebook:string;
+    instagram:string;
     
 
     constructor(nick: string, email: string, senha: string, tel: string, imagem?:string){
@@ -28,6 +33,13 @@ export class Usuario {
         if(imagem){
             this.imagem = imagem;
         }
+
+        //media social
+        this.github = '';
+        this.linkedin ='';
+        this.facebook = '';
+        this.instagram = '';
+
         Usuario.count++;
     }
 

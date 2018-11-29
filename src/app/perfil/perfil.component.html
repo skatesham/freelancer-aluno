@@ -9,14 +9,18 @@
     <p>Aqui encontram-se os dados da sua conta e possibilita alterar alguns de seus dados.</p>
   </div>
 
-  
+
   <div class="row text-center">
     <!-- Coluna da esquerda-->
     <div class="col-sm-3">
       <!-- Imagem e Input file-->
       <div class="text-center">
+
+        <!-- Imagem Perfil-->
         <img [src]="url" class="rounded-circle avatar img-thumbnail" alt="avatar">
-        <h6>Selecionar imagem para perfil...</h6>
+
+        <!-- INPUT FILE para imagem perfil-->
+        <h6 class="text-light">Selecionar imagem para perfil...</h6>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text">Enviar</span>
@@ -29,11 +33,22 @@
         </div>
       </div>
       <hr>
+      <div class="panel card">
+        <div class="panel-heading">Social Media</div>
+        <div class="panel-body">
+          <a [hidden]="usuario.github == ''" [href]="usuario.github" class=" m-1"><i class="fab fa-github fa-2x"></i></a>
+          <a [hidden]="usuario.linkedin == ''" [href]="usuario.linkedin" class="m-1"><i class="fab fa-linkedin fa-2x"></i></a>
+          <a [hidden]="usuario.facebook ==''" [href]="usuario.facebook" class="m-1"><i class="fab fa-facebook fa-2x"></i></a>
+          <a [hidden]="usuario.instagram == ''" [href]="usuario.instagram" class=" m-1"><i class="fab fa-instagram fa-2x"></i></a>
+        </div>
+      </div>
+
       <br>
     </div>
 
     <!-- Coluna da Direita-->
     <div class="col-sm-9">
+
       <!-- User information -->
       <ul class="list-group">
         <li class="list-group-item">
@@ -48,29 +63,50 @@
           <strong>Telefone:</strong> {{usuario.tel}}</li>
       </ul>
       <hr>
+
+      <!-- button show form alterar dados do perfil -->
+      <button class="btn btn-block btn-dark" [hidden]="!esconder" (click)="esconder = !esconder">Alterar Dados</button>
       <!-- Form Modelo para alterar os dados-->
-      <form (ngSubmit)="salvarInfo()" hidden>
+      <form (ngSubmit)="salvarInfo()" #dadosForm="ngForm" [hidden]="esconder">
         <h3 class="text-light bg-dark card">Alterar dados</h3>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Nick</span>
-          </div>
-          <input class="form-control">
-        </div>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Email</span>
-          </div>
-          <input class="form-control">
-        </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text">Telefone</span>
           </div>
-          <input class="form-control">
+          <input [(ngModel)]='usuario.tel' #telefone="ngModel" name="telefone" class="form-control" maxlength="11"
+            minlength="11" required>
         </div>
-        <button class="btn btn-block btn-warning" disabled>Salvar Informações</button>
+        <div [hidden]="telefone.valid" class="alert alert-danger">O telefone deve conter o DDD e o
+          telefone juntos, dessa maneira conter 11 caracteres</div>
+        <h5 class="text-light bg-dark card">Medias Sociais</h5>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Github</span>
+          </div>
+          <input [(ngModel)]='usuario.github' #git="ngModel" name="github" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Linkedin</span>
+          </div>
+          <input [(ngModel)]='usuario.linkedin' #lin="ngModel" name="linkedin" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Facebook</span>
+          </div>
+          <input [(ngModel)]='usuario.facebook' #fac="ngModel" name="facebook" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Instagram</span>
+          </div>
+          <input [(ngModel)]='usuario.instagram' #ins="ngModel" name="instagram" class="form-control">
+        </div>
+        <button class="btn btn-block btn-warning" [disabled]="!dadosForm.form.valid">Salvar Informações</button>
       </form>
+
+
 
       <!-- Mostrar todas Tags DESATIVADO-->
       <ul class="list-group" hidden>
