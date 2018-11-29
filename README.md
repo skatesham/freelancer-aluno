@@ -3,7 +3,7 @@ Aplicação Front-End Angular 6 visual para pedido de ajuda para matérias da fa
 Este sistema possui login com facebook e conta google.
 
 ## Implantação
-Este sistema está implantado no github pages no link: https://skatesham.github.io/freelancer-aluno/freelancer-aluno.
+Este sistema está implantado no github pages no link: https://skatesham.github.io/freelancer-aluno.
 
 
 
