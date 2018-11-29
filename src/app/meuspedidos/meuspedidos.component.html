@@ -5,6 +5,8 @@
     <p>Aqui encontram-se todos os pedidos realizados e pode-se gerenciar seus pedidos. Aqui também local onde pode-se
       aceitar uma proposta para seu pedido.</p>
   </div>
+
+  <!-- LISTA DE PEDIDOS -->
   <ngb-accordion [closeOthers]="true" activeIds="static-1">
     <ngb-panel *ngFor="let pedido of pedidos" title="{{pedido.titulo}}">
       <ng-template ngbPanelContent>
@@ -17,6 +19,8 @@
               <li *ngFor="let tag of pedido.tags"> {{ tag.nome }}</li>
             </ul>
           </li>
+
+          <!-- PEDIDO NÃO AVALIADO -->
           <li class="list-group-item" *ngIf="!pedido.avaliado">
             <p class="alert alert-success" *ngIf="pedido.aberto">Pedido Aberto</p>
             <p class="alert alert-danger" *ngIf="!pedido.aberto">Pedido Fechado</p>
@@ -29,6 +33,8 @@
             <button (click)="fecharPedido(pedido)" *ngIf="pedido.aberto" class="ml-2 btn btn-danger"> Fechar Pedido</button>
             <button (click)="abrirPedido(pedido)" *ngIf="!pedido.aberto" class="ml-2 btn btn-success"> Abrir Pedido</button>
           </li>
+
+          <!-- PEDIDO AVALIADO -->
           <li class="list-group-item" *ngIf="pedido.avaliado">
             <ul class="list-group">
               <li class="list-group-item bg-warning">
@@ -39,9 +45,24 @@
               <li class="list-group-item bg-success">
                 <h5>Contato</h5>
               </li>
+
+              <li class="list-group-item">
+                <img [src]="url" width="100px" class="rounded-circle avatar img-thumbnail" alt="avatar">
+              </li>
               <li class="list-group-item"><strong>Nick:</strong> {{ pedido.proposta.usuario.nick }}</li>
               <li class="list-group-item"><strong>Email:</strong> {{ pedido.proposta.usuario.email }}</li>
               <li class="list-group-item"><strong>Telefone:</strong> {{ pedido.proposta.usuario.tel }}</li>
+              <li class="list-group-item">
+                <div class="panel">
+                  <div class="panel-heading">Medias Sociais</div>
+                  <div class="panel-body">
+                    <a [hidden]="pedido.proposta.usuario.github == ''" [href]="pedido.proposta.usuario.github" class=" m-1"><i class="fab fa-github fa-2x"></i></a>
+                    <a [hidden]="pedido.proposta.usuario.linkedin == ''" [href]="pedido.proposta.usuario.linkedin" class="m-1"><i class="fab fa-linkedin fa-2x"></i></a>
+                    <a [hidden]="pedido.proposta.usuario.facebook ==''" [href]="pedido.proposta.usuario.facebook" class="m-1"><i class="fab fa-facebook fa-2x"></i></a>
+                    <a [hidden]="pedido.proposta.usuario.instagram == ''" [href]="pedido.proposta.usuario.instagram" class=" m-1"><i class="fab fa-instagram fa-2x"></i></a>
+                  </div>
+                </div>
+              </li>
             </ul>
           </li>
         </ul>

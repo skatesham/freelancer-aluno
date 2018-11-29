@@ -5,6 +5,7 @@ import { Usuario } from '../models/usuario';
 import { propostas } from '../models/mock-propostas';
 import { Router } from '@angular/router';
 import { PropostasService } from '../services/propostas.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-meuspedidos',
@@ -15,10 +16,12 @@ export class MeuspedidosComponent implements OnInit {
 
   pedidos: Pedido[];
   usuario: Usuario;
+  url:any;
 
-  constructor(private router:Router, private pedidosService: PedidosService, private propostasService:PropostasService) {
+  constructor(private domSanitizer: DomSanitizer, private router:Router, private pedidosService: PedidosService, private propostasService:PropostasService) {
     let u = localStorage.getItem('usuario');
     this.usuario = JSON.parse(u);
+    this.url = this.domSanitizer.bypassSecurityTrustUrl(this.usuario.imagem);
     propostas;
    }
 

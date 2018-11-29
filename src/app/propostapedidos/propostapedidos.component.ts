@@ -33,7 +33,7 @@ export class PropostapedidosComponent implements OnInit {
     proposta = this.servicePropostas.reponderProposta(resposta, proposta);
     if(resposta){
       this.pedido = this.pedidosService.aceitarPedido(proposta.pedido, proposta);
-      this.router.navigate(['/pedidos']);
+      this.router.navigate(['/meus-pedidos']);
     } else{
       this.setUp();
     }
