@@ -66,6 +66,7 @@
 
       <!-- button show form alterar dados do perfil -->
       <button class="btn btn-block btn-dark" [hidden]="!esconder" (click)="esconder = !esconder">Alterar Dados</button>
+      
       <!-- Form Modelo para alterar os dados-->
       <form (ngSubmit)="salvarInfo()" #dadosForm="ngForm" [hidden]="esconder">
         <h3 class="text-light bg-dark card">Alterar dados</h3>
@@ -105,7 +106,7 @@
           </div>
           <input [(ngModel)]='usuario.instagram' #ins="ngModel" name="instagram" class="form-control">
         </div>
-        <button class="btn btn-block btn-warning" [disabled]="!dadosForm.form.valid">Salvar Informações</button>
+        <button class="btn btn-block btn-warning" [disabled]="!dadosForm.form.valid" (click)="esconder = !esconder">Salvar Informações</button>
       </form>
 
 
