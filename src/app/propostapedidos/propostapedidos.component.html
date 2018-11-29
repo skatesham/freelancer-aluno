@@ -2,7 +2,8 @@
 <div class="container">
     <div class="jumbotron bg-dark text-light">
         <h1>Propostas do pedido</h1>
-        <p>Aqui encontram-se todas propostas abertas recebidas do seu pedido. Esse local onde pode avaliar seus pedidos.
+        <p>Aqui encontram-se todas propostas abertas recebidas do seu pedido. Esse local onde pode avaliar seus
+            pedidos.
             Deve-se saber que somente é possível aceitar uma proposta, então analise bem sua decisão.
         </p>
     </div>
@@ -17,12 +18,34 @@
                         <p class="alert alert-success" *ngIf="proposta.aceita">Proposta Aceita</p>
                         <p class="alert alert-danger" *ngIf="!proposta.aceita">Proposta Recusada</p>
                     </li>
+                    <li class="list-group-item" [class.bg-danger]="proposta.avaliado">
+                        <h3>Proposta</h3>
+                    </li>
+                    <li class="list-group-item"><strong>Título:</strong> {{ proposta.titulo }}</li>
                     <li class="list-group-item"><strong>Descrição:</strong> {{ proposta.descricao }}</li>
                     <li class="list-group-item"><strong>Usuario:</strong> {{ proposta.usuario.nick }}</li>
                     <li class="list-group-item">
+                        <img [src]="domSanitizer.bypassSecurityTrustUrl(proposta.usuario.imagem)" width="100px" class="rounded-circle avatar img-thumbnail" alt="avatar">
+                      </li>
+                    <li class="list-group-item">
+                        <div class="panel">
+                            <div class="panel-heading">Medias Sociais</div>
+                            <div class="panel-body">
+                                <a [hidden]="proposta.usuario.github == ''"
+                                    class=" m-1"><i class="fab fa-github fa-2x"></i></a>
+                                <a [hidden]="proposta.usuario.linkedin == ''" 
+                                    class="m-1"><i class="fab fa-linkedin fa-2x"></i></a>
+                                <a [hidden]="proposta.usuario.facebook ==''"
+                                    class="m-1"><i class="fab fa-facebook fa-2x"></i></a>
+                                <a [hidden]="proposta.usuario.instagram == ''" 
+                                    class=" m-1"><i class="fab fa-instagram fa-2x"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
                         <ul class="list-group">
                             <li class="list-group-item" [class.bg-danger]="proposta.avaliado">
-                                <h3>Pedido:</h3>
+                                <h3>Meu Pedido</h3>
                             </li>
                             <li class="list-group-item"><strong>Título:</strong> {{ proposta.pedido.titulo }}</li>
                             <li class="list-group-item"><strong>Disciplina:</strong> {{ proposta.pedido.disciplina }}</li>
@@ -36,10 +59,10 @@
                         </ul>
                     </li>
                     <li class="list-group-item" *ngIf="!proposta.avaliado">
-                        <button (click)="responderProposta(true, proposta)" class="ml-2 btn btn-success">
+                        <button (click)="responderProposta(true, proposta)" class="ml-2 btn btn-success btn-block">
                             Aceitar
                             Proposta</button>
-                        <button (click)="responderProposta(false, proposta)" class="ml-2 btn btn-danger">
+                        <button (click)="responderProposta(false, proposta)" class="ml-2 btn btn-danger btn-block">
                             Recusar
                             Proposta</button>
                     </li>

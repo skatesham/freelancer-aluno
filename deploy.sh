@@ -5,16 +5,17 @@ ng build --prod --output-path docs --base-href freelancer-aluno
 
 ## Criando página de "not found"
 cp docs/index.html docs/404.html
+echo "Arquivo de implatanção criados!"
 
 ## Gerenciamento e Implantação para o Github
 
 # Adicionar todos os arquivos para envio
 git add .
-
 # Criar commit com o primeiro argumento como comit
 # para commit's com espaço utilizar 'commit com espaço'
 git commit -m "$1"
 # Obter o repositório atualizado
 git pull origin master
 #Enviar para o Github o commit criado
-git push origin master 
+git push origin master
+echo "Implantação completa com Github!"

@@ -5,6 +5,7 @@ import { Usuario } from '../models/usuario';
 import { propostas } from '../models/mock-propostas';
 import { PropostasService } from '../services/propostas.service';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pedidos',
@@ -17,7 +18,9 @@ export class PedidosComponent implements OnInit {
 
   usuario: Usuario;
 
-  constructor(private router:Router, private pedidosService:PedidosService, private propostasService:PropostasService) {
+  url:any;
+
+  constructor(private domSanitizer: DomSanitizer, private router:Router, private pedidosService:PedidosService, private propostasService:PropostasService) {
     let u = localStorage.getItem('usuario');
     this.usuario = JSON.parse(u);
     propostas;

@@ -23,7 +23,7 @@
         <h6 class="text-light">Selecionar imagem para perfil...</h6>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text">Enviar</span>
+            <span class="input-group-text">Upload</span>
           </div>
           <div class="custom-file">
             <input [(ngModel)]="file" (change)="uploadFile($event)" data-buttonText="123" type="file" class="custom-file-input"
@@ -34,7 +34,7 @@
       </div>
       <hr>
       <div class="panel card">
-        <div class="panel-heading">Social Media</div>
+        <div class="panel-heading">Medias Socias</div>
         <div class="panel-body">
           <a [hidden]="usuario.github == ''" [href]="usuario.github" class=" m-1"><i class="fab fa-github fa-2x"></i></a>
           <a [hidden]="usuario.linkedin == ''" [href]="usuario.linkedin" class="m-1"><i class="fab fa-linkedin fa-2x"></i></a>

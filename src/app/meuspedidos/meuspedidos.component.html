@@ -28,10 +28,10 @@
           <li class="list-group-item" *ngIf="!pedido.avaliado"><strong>Propostas: </strong> {{
             getQuantidadeAberto(pedido) }}</li>
           <li class="list-group-item" *ngIf="!pedido.avaliado">
-            <button *ngIf="getQuantidadeAberto(pedido) > 0" (click)="verPropostas(pedido)" class="btn btn-info mr-2">
+            <button *ngIf="getQuantidadeAberto(pedido) > 0" (click)="verPropostas(pedido)" class="btn btn-info mr-2 btn-block">
               Propostas</button>
-            <button (click)="fecharPedido(pedido)" *ngIf="pedido.aberto" class="ml-2 btn btn-danger"> Fechar Pedido</button>
-            <button (click)="abrirPedido(pedido)" *ngIf="!pedido.aberto" class="ml-2 btn btn-success"> Abrir Pedido</button>
+            <button (click)="fecharPedido(pedido)" *ngIf="pedido.aberto" class="ml-2 btn btn-danger btn-block"> Fechar Pedido</button>
+            <button (click)="abrirPedido(pedido)" *ngIf="!pedido.aberto" class="ml-2 btn btn-success btn-block"> Abrir Pedido</button>
           </li>
 
           <!-- PEDIDO AVALIADO -->
@@ -47,7 +47,7 @@
               </li>
 
               <li class="list-group-item">
-                <img [src]="url" width="100px" class="rounded-circle avatar img-thumbnail" alt="avatar">
+                <img [src]="domSanitizer.bypassSecurityTrustUrl(pedido.proposta.usuario.imagem)" width="100px" class="rounded-circle avatar img-thumbnail" alt="avatar">
               </li>
               <li class="list-group-item"><strong>Nick:</strong> {{ pedido.proposta.usuario.nick }}</li>
               <li class="list-group-item"><strong>Email:</strong> {{ pedido.proposta.usuario.email }}</li>

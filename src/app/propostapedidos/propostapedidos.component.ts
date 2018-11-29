@@ -4,6 +4,7 @@ import { Proposta } from '../models/proposta';
 import { PropostasService } from '../services/propostas.service';
 import { PedidosService } from '../services/pedidos.service';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-propostapedidos',
@@ -15,8 +16,9 @@ export class PropostapedidosComponent implements OnInit {
   propostas: Proposta[];
   pedidoId: number;
   pedido: Pedido;
+  url;
 
-  constructor(private router:Router, private servicePropostas:PropostasService, private pedidosService:PedidosService) {
+  constructor(private domSanitizer: DomSanitizer,private router:Router, private servicePropostas:PropostasService, private pedidosService:PedidosService) {
     this.pedidoId = parseInt(localStorage.getItem('pedido'));
    }
 

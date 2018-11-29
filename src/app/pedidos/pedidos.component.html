@@ -1,14 +1,22 @@
 <app-navbar></app-navbar>
 <div class="container">
   <div class="jumbotron bg-dark text-light">
-      <h1>Todos Pedidos</h1>
-      <p>Aqui encontram-se todos os pedidos de ajudas abertos disponíveis do Freelancer Aluno.</p>
-      <p>Os pedidos podem ser analisados e enviar propostas pela lista abaixo.</p>
+    <h1>Todos Pedidos</h1>
+    <p>Aqui encontram-se todos os pedidos de ajudas abertos disponíveis do Freelancer Aluno.</p>
+    <p>Os pedidos podem ser analisados e enviar propostas pela lista abaixo.</p>
   </div>
   <ngb-accordion [closeOthers]="true" activeIds="static-1">
     <ngb-panel *ngFor="let pedido of pedidos" title="{{pedido.titulo}}">
       <ng-template ngbPanelContent>
         <ul class="list-group">
+          <li class="list-group-item ">
+            <h5>Pedido</h5>
+          </li>
+          <li class="list-group-item">
+            <img [src]="domSanitizer.bypassSecurityTrustUrl(pedido.usuario.imagem)" width="100px" class="rounded-circle avatar img-thumbnail"
+              alt="avatar">
+          </li>
+          <li class="list-group-item"><strong>Usuario:</strong> {{ pedido.usuario.nick }}</li>
           <li class="list-group-item"><strong>Disciplina:</strong> {{ pedido.disciplina }}</li>
           <li class="list-group-item"><strong>Descrição:</strong> {{ pedido.descricao }}</li>
           <li class="list-group-item">
@@ -17,10 +25,27 @@
               <li *ngFor="let tag of pedido.tags"> {{ tag.nome }}</li>
             </ul>
           </li>
-          <li class="list-group-item"><strong>Propostas: </strong> {{ getQuantidadeAberto(pedido) }}</li>
+          <li class="list-group-item">
+            <div class="panel">
+              <div class="panel-heading">Medias Sociais</div>
+              <div class="panel-body">
+                <a [hidden]="pedido.usuario.github == ''"  class=" m-1"><i
+                    class="fab fa-github fa-2x"></i></a>
+                <a [hidden]="pedido.usuario.linkedin == ''" class="m-1"><i
+                    class="fab fa-linkedin fa-2x"></i></a>
+                <a [hidden]="pedido.usuario.facebook ==''" class="m-1"><i
+                    class="fab fa-facebook fa-2x"></i></a>
+                <a [hidden]="pedido.usuario.instagram == ''" class=" m-1"><i
+                    class="fab fa-instagram fa-2x"></i></a>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item"><strong>Quantidade de propostas: </strong> {{ getQuantidadeAberto(pedido) }}</li>
         </ul>
-        <li class="list-group-item" *ngIf="usuario.id !== pedido.usuario.id"><button (click)="enviarProposta(pedido)" class="btn btn-success btn-block">Enviar Proposta</button></li>
-        <li class="list-group-item" *ngIf="usuario.id === pedido.usuario.id && getQuantidadeAberto(pedido) > 0"><button class="btn btn-info btn-block" (click)="verPropostas(pedido)">Ver Propostas</button></li>
+        <li class="list-group-item" *ngIf="usuario.id !== pedido.usuario.id"><button (click)="enviarProposta(pedido)"
+            class="btn btn-success btn-block">Enviar Proposta</button></li>
+        <li class="list-group-item" *ngIf="usuario.id === pedido.usuario.id && getQuantidadeAberto(pedido) > 0"><button
+            class="btn btn-info btn-block" (click)="verPropostas(pedido)">Ver Propostas</button></li>
       </ng-template>
     </ngb-panel>
   </ngb-accordion>
