@@ -2,7 +2,7 @@
 Aplicação Front-End Angular 6 visual para pedido de ajuda para matérias da faculdade e propostas de aulas. Esta foi desenvolvida com um mock do sistema com classes typescript para posteriormente ser integrado a um API REST.
 Este sistema possui login com facebook e conta google. [Essa aplicação está disponível aqui](https://skatesham.github.io/freelancer-aluno)
 
-Desenvolvido por `Sham Vinicius Fiorin`
+Desenvolvido por `Sham Vinicius Fiorin`, graduado em `Análise e Desenvolvimento de Sistemas` na `FATEC-SJC`.
 - [Linkedin](https://www.linkedin.com/in/shamfiorin/)
 - [Facebook](https://www.facebook.com/svfiorin)
 - [Github](https://github.com/skatesham)
