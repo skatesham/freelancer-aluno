@@ -2,8 +2,13 @@
 Aplicação Front-End Angular 6 visual para pedido de ajuda para matérias da faculdade e propostas de aulas. Esta foi desenvolvida com um mock do sistema com classes typescript para posteriormente ser integrado a um API REST.
 Este sistema possui login com facebook e conta google. [Essa aplicação está disponível aqui](https://skatesham.github.io/freelancer-aluno)
 
+Desenvolvido por `Sham Vinicius Fiorin`
+- [Linkedin](https://www.linkedin.com/in/shamfiorin/)
+- [Facebook](https://www.facebook.com/svfiorin)
+- [Github](https://github.com/skatesham)
+
 ## Implantação
-[Este sistema está implantado no github pages neste link](https://skatesham.github.io/freelancer-aluno): https://skatesham.github.io/freelancer-aluno.
+Este sistema está implantado no github pages neste link: https://skatesham.github.io/freelancer-aluno.
 
 ## Requisitos funcionais
 Os requisitos funcionais são mostrados em um diagrama de caso de uso da UML.
@@ -42,7 +47,7 @@ Para realizar o deploy completo para o github, execute `./deploy.sh 'texto para 
 
 Para concedendo permissão `sudo chmod +x push.sh`
 
-Para adicionar, commit, atualizar e enviar,  execute `./push.sh 'texto para o commit'`
+Para adicionar, commit, atualizar e enviar, execute `./push.sh 'texto para o commit'`
 
 ## English Develop Explanations (generated)
 
