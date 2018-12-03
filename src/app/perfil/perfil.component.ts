@@ -5,6 +5,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Tag } from '../models/tag';
 import { TagsService } from '../services/tags.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UsuarioModel } from '../models/usuarioModel';
 
 @Component({
   selector: 'app-perfil',
@@ -13,10 +14,13 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class PerfilComponent implements OnInit {
 
-  usuario: Usuario;
+  usuario: UsuarioModel;
   tags: Tag[];
   file;
   url: any;
+
+  fileSubmited: boolean = false;
+  submited: boolean = false;
 
   // Form tratamento
   esconder: boolean = true;
@@ -27,7 +31,6 @@ export class PerfilComponent implements OnInit {
     private domSanitizer: DomSanitizer) {
     let u = localStorage.getItem('usuario');
     this.usuario = JSON.parse(u);
-
   }
 
   ngOnInit() {
@@ -36,16 +39,15 @@ export class PerfilComponent implements OnInit {
   }
 
   uploadFile(evt) {
+    this.fileSubmited = true;
     this.file = evt.target.files[0];
     if (this.file != null) {
       let reader = new FileReader();
 
       reader.onload = (e) => {
         //console.log(reader.result.toString());
-        this.url = this.domSanitizer.bypassSecurityTrustUrl(reader.result.toString());
         this.usuario.imagem = reader.result.toString();
-        this.usuariosService.atualizarUsuario(this.usuario);
-        localStorage.setItem("usuario", JSON.stringify(this.usuario));
+        this.updateInfo(this.usuario);
       }
 
       reader.readAsDataURL(this.file);
@@ -53,6 +55,20 @@ export class PerfilComponent implements OnInit {
   }
 
   salvarInfo() {
-
+    this.submited = true;
+    this.updateInfo(this.usuario);
   }
+
+  updateInfo(usuario: UsuarioModel) {
+    this.usuariosService.atualizarUsuario(usuario).subscribe((usuario: UsuarioModel) => {
+      if (usuario != null) {
+        this.usuario = usuario;
+        this.url = this.domSanitizer.bypassSecurityTrustUrl(usuario.imagem);
+        localStorage.setItem("usuario", JSON.stringify(this.usuario));
+      }
+      this.submited = false;
+      this.fileSubmited = false;
+    });
+  }
+
 }

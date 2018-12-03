@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuariosService } from '../services/usuarios.service';
-import { Usuario } from '../models/usuario';
 import { UsuarioModel } from '../models/usuarioModel';
 
 @Component({
@@ -14,7 +13,9 @@ export class LoginComponent implements OnInit {
   email: string = 'sham.vinicius@gmail.com';
   password: string = '123';
 
-  usuario;
+  usuario:UsuarioModel;
+
+  submit = false;
 
   erro: boolean = false;
   erroDesc: string = '';
@@ -25,14 +26,15 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.usuariosService.getUsuarioByEmail(this.email).subscribe(usuario => {
-      console.log(usuario);
+    this.submit = true;
+    this.usuariosService.getUsuarioByEmail(this.email).subscribe((usuario:UsuarioModel) => {
       if (usuario != null) {
         this.usuario = usuario;
         this.loginRequest();
 
       } else {
         this.loginErro("Erro! O email não foi encontrado.");
+        this.submit = false;
       }
     });
 
@@ -42,11 +44,13 @@ export class LoginComponent implements OnInit {
 
     this.usuariosService.login(this.usuario['email'], this.password).subscribe(login => {
       if (login['success']) {
-        localStorage.setItem("token", JSON.stringify(this.usuario.token));
+        localStorage.setItem("token", JSON.stringify(login['token']));
         localStorage.setItem("usuario", JSON.stringify(this.usuario));
+        console.log(this.usuario);
         this.router.navigate(['/perfil']);
       } else {
         this.loginErro("Erro! A senha está incorreta.");
+        this.submit = false;
       }
     });
   }
