@@ -38,7 +38,9 @@ export class SigninComponent implements OnInit {
 
         // Tratando novo usuario Google e Facebook
         let email = userData.email;
-        let usuario:Usuario = this.usuariosService.getUsuarioByEmail(email);
+        let login;
+        let usuario = login.usuario;
+        this.usuariosService.getUsuarioByEmail(email).subscribe(data => login = data, err => console.log(err))
         if(usuario != null){
           this.router.navigate(['/perfil']);
           localStorage.setItem("usuario", JSON.stringify(usuario));
