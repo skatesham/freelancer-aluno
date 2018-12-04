@@ -68,7 +68,11 @@ export class PerfilComponent implements OnInit {
       }
       this.submited = false;
       this.fileSubmited = false;
-    }, (err) => console.log(err));
+    }, (err) => {
+      console.log(err);
+      this.submited = false;
+      this.fileSubmited = false;
+    });
   }
 
 }
