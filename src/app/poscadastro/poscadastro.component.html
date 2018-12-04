@@ -38,7 +38,7 @@
         <div [hidden]="telefone.valid || telefone.prestine" class="alert alert-danger">O telefone deve conter o DDD e o
           telefone juntos e conter 11 caracteres</div>
         <!-- Submit Button -->
-        <button [disabled]="!poscadastroForm.form.valid" class="btn btn-block btn-dark" type="submit">Enviar Proposta</button>
+        <button [disabled]="!poscadastroForm.form.valid || submit" class="btn btn-block btn-dark" type="submit">Enviar Proposta</button>
       </form>
 
     </div>

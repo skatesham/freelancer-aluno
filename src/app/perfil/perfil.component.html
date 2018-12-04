@@ -20,13 +20,13 @@
         <img [src]="url" class="rounded-circle avatar img-thumbnail" alt="avatar">
 
         <!-- INPUT FILE para imagem perfil-->
-        <h6 class="text-light">Selecionar imagem para perfil...</h6>
+        <h6 class="text-light">Selecione para alterar a imagem de perfil</h6>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text">Upload</span>
           </div>
           <div class="custom-file">
-            <input [(ngModel)]="file" (change)="uploadFile($event)" data-buttonText="123" type="file" class="custom-file-input"
+            <input [(ngModel)]="file" [disabled]="fileSubmited" style="cursor: pointer" (change)="uploadFile($event)" data-buttonText="123" type="file" class="custom-file-input"
               id="inputGroupFile01">
             <label class="custom-file-label" for="inputGroupFile01"></label>
           </div>
@@ -106,7 +106,7 @@
           </div>
           <input [(ngModel)]='usuario.instagram' #ins="ngModel" name="instagram" class="form-control">
         </div>
-        <button class="btn btn-block btn-warning" [disabled]="!dadosForm.form.valid" (click)="esconder = !esconder">Salvar Informações</button>
+        <button class="btn btn-block btn-warning" [disabled]="!dadosForm.form.valid || submited" (click)="esconder = !esconder">Salvar Informações</button>
       </form>
 
 

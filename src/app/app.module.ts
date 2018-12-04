@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {
   SocialLoginModule,
@@ -26,6 +27,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
 import { CriarpropostaComponent } from './criarproposta/criarproposta.component';
 import { SigninComponent } from './signin/signin.component';
 import { PoscadastroComponent } from './poscadastro/poscadastro.component';
+import { TokenInterceptor } from './auth/token-interceptor';
 
 
 // Configs 
@@ -45,7 +47,7 @@ export function getAuthServiceConfigs() {
         provider: new LinkedinLoginProvider("1098828800522-m2ig6bieilc3tpqvmlcpdvrpvn86q4ks.apps.googleusercontent.com")
       },*/
     ]
-)
+  )
   return config;
 }
 
@@ -70,9 +72,11 @@ export function getAuthServiceConfigs() {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    HttpClientModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     AuthGuardService,
     { provide: AuthServiceConfig, useFactory: getAuthServiceConfigs }
   ],
