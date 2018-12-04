@@ -29,8 +29,7 @@ export class PerfilComponent implements OnInit {
     private usuariosService: UsuariosService,
     private tagsService: TagsService,
     private domSanitizer: DomSanitizer) {
-    let u = localStorage.getItem('usuario');
-    this.usuario = JSON.parse(u);
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
   }
 
   ngOnInit() {
@@ -47,6 +46,7 @@ export class PerfilComponent implements OnInit {
       reader.onload = (e) => {
         //console.log(reader.result.toString());
         this.usuario.imagem = reader.result.toString();
+        //let imagem = this.resizeImage.resize(reader, 100, 100, this.resizeImage.PNG);
         this.updateInfo(this.usuario);
       }
 
@@ -68,7 +68,7 @@ export class PerfilComponent implements OnInit {
       }
       this.submited = false;
       this.fileSubmited = false;
-    });
+    }, (err) => console.log(err));
   }
 
 }

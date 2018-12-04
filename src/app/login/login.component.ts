@@ -44,9 +44,9 @@ export class LoginComponent implements OnInit {
 
     this.usuariosService.login(this.usuario['email'], this.password).subscribe(login => {
       if (login['success']) {
-        localStorage.setItem("token", JSON.stringify(login['token']));
+        localStorage.setItem("token", login['token']);
         localStorage.setItem("usuario", JSON.stringify(this.usuario));
-        console.log(this.usuario);
+        //console.log(login['token']);
         this.router.navigate(['/perfil']);
       } else {
         this.loginErro("Erro! A senha está incorreta.");
