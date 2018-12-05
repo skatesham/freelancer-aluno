@@ -4,23 +4,21 @@ import { Pedido } from '../models/pedido';
 import { Usuario } from '../models/usuario';
 import { propostas } from '../models/mock-propostas';
 import { Proposta } from '../models/proposta';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PedidosService {
 
-  constructor() {
+  urlbase: string = 'https://freelancer-aluno.herokuapp.com/';
+  
+  constructor(private http:HttpClient) {
   }
 
   getPedidos(){
-    let listaPedidos: Pedido[] = new Array<Pedido>();
-    pedidos.forEach(p => {
-      if(p.aberto){
-        listaPedidos.push(p);
-      }
-    });
-    return listaPedidos;
+    let url = this.urlbase + "pedidos"
+    return this.http.get(url);
   }
 
   getPedidosByUsuario(u: Usuario){

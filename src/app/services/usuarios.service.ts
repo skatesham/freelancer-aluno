@@ -22,6 +22,11 @@ export class UsuariosService {
   constructor(private http: HttpClient) {
   }
 
+  getById(usuario_id:string){
+    let url = this.urlbase + 'usuarios/' + usuario_id;
+    return this.http.get(url);
+  }
+
   /**
    * Busca de usuario por Email no servidor Node
    * @param email Email para busca de usuario
@@ -36,14 +41,9 @@ export class UsuariosService {
     return this.http.post(url, { 'email': email, 'senha': senha }, this.httpOptions);
   }
 
-  oldGetUsuarioByEmail(email: string) {
-    let usuario = null;
-    usuarios.forEach(u => {
-      if (u.email == email) {
-        usuario = u;
-      }
-    });
-    return usuario;
+  getUsuarios(){
+    let url = this.urlbase + 'usuarios';
+    return this.http.get(url);
   }
 
   criarUsuario(usuario: any) {

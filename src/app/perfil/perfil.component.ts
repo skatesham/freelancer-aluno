@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../services/usuarios.service';
-import { Usuario } from '../models/usuario';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Tag } from '../models/tag';
 import { TagsService } from '../services/tags.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UsuarioModel } from '../models/usuarioModel';
+import { TagModel } from '../models/tagModel';
 
 @Component({
   selector: 'app-perfil',
@@ -15,9 +14,10 @@ import { UsuarioModel } from '../models/usuarioModel';
 export class PerfilComponent implements OnInit {
 
   usuario: UsuarioModel;
-  tags: Tag[];
   file;
   url: any;
+
+  //tags: TagModel[];
 
   fileSubmited: boolean = false;
   submited: boolean = false;
@@ -33,7 +33,7 @@ export class PerfilComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tags = this.tagsService.getTags();
+    //this.tags = this.tagsService.getTags();
     this.url = this.domSanitizer.bypassSecurityTrustUrl(this.usuario.imagem);
   }
 

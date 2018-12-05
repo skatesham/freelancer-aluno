@@ -6,7 +6,7 @@
     <p>Os pedidos podem ser analisados e enviar propostas pela lista abaixo.</p>
   </div>
   <ngb-accordion [closeOthers]="true" activeIds="static-1">
-    <ngb-panel *ngFor="let pedido of pedidos" title="{{pedido.titulo}}">
+    <ngb-panel *ngFor="let pedido of pedidos"  [title]="pedido.titulo">
       <ng-template ngbPanelContent>
         <ul class="list-group">
           <li class="list-group-item ">
